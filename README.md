@@ -1,0 +1,2 @@
+# BFDisplayEvent
+数据显示与点击事件与controller解耦
