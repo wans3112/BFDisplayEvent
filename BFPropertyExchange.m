@@ -23,7 +23,7 @@ static void *kPropertyNameKey = &kPropertyNameKey;
 
 #pragma mark - Getter&&Setter
 
-- (id(^)(NSString *))icp {
+- (id(^)(NSString *))em_property {
     
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *propertyName) = ^id (NSString *propertyName) {
@@ -46,7 +46,7 @@ static void *kPropertyNameKey = &kPropertyNameKey;
 
 @implementation BFPropertyExchange
 
-- (NSDictionary *)exchangeKeyFromPropertyName {
+- (NSDictionary *)em_exchangeKeyFromPropertyName {
 
     return nil;
 }
@@ -69,15 +69,25 @@ static void *kPropertyNameKey = &kPropertyNameKey;
     
     NSString *propertyName = NSStringFromSelector(aSelector);
     
-    NSDictionary *propertyDic = [self exchangeKeyFromPropertyName];
+    NSDictionary *propertyDic = [self em_exchangeKeyFromPropertyName];
     
-    if ( [propertyDic.allKeys containsObject:propertyName] ) {
-        NSString *originalPropertyName = [propertyDic objectForKey:propertyName];
-        
+    NSMethodSignature* (^doGetMethodSignature)(NSString *propertyName) = ^(NSString *propertyName){
+    
         NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:"v@:"];
-        objc_setAssociatedObject(methodSignature, kPropertyNameKey, originalPropertyName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(methodSignature, kPropertyNameKey, propertyName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
         return  [NSMethodSignature signatureWithObjCTypes:"v@:"];
+    };
+    
+    if ( [propertyDic.allKeys containsObject:propertyName] ) {
+        
+        NSString *targetPropertyName = [NSString stringWithFormat:@"em_%@",propertyName];
+        if ( ![self respondsToSelector:NSSelectorFromString(targetPropertyName)] ) {
+            // 如果没有em_重写属性，则用model原属性替换
+            targetPropertyName = [propertyDic objectForKey:propertyName];
+        }
+        
+        return doGetMethodSignature(targetPropertyName);
     }
     
     return [super methodSignatureForSelector:aSelector];

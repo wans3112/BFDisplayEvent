@@ -10,7 +10,7 @@
 
 @protocol BFPropertyExchangeProtocol <NSObject>
 
-- (NSDictionary *)exchangeKeyFromPropertyName;
+- (NSDictionary *)em_exchangeKeyFromPropertyName;
 
 @end
 
@@ -19,7 +19,7 @@
 /**
  调用替换属性 Invocation property
  */
-@property (nonatomic, copy) id(^icp)(NSString *propertyName);
+@property (nonatomic, copy) id(^em_property)(NSString *propertyName);
 
 @end
 
