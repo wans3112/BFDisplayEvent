@@ -27,9 +27,9 @@ static void *kEventManagerKey = &kEventManagerKey;
         
         UIViewController<BFEventManagerProtocol> *controller = (UIViewController<BFEventManagerProtocol> *)self.em_viewController;
         
-        if ( [controller respondsToSelector:@selector(eventManagerWithPropertName)]) {
+        if ( [controller respondsToSelector:@selector(em_eventManagerWithPropertName)]) {
             
-            NSString *propertyName = [controller eventManagerWithPropertName];
+            NSString *propertyName = [controller em_eventManagerWithPropertName];
             
             tempEventManager =  [controller valueForKey:propertyName];
             

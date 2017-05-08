@@ -69,7 +69,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 
  @param eventType 事件标志
  */
-- (void)didSelectItemWithEventType:(NSInteger)eventType;
+- (void)em_didSelectItemWithEventType:(NSInteger)eventType;
 
 
 - (void)em_CommonEvents:(BFEventModel *)eventModel;

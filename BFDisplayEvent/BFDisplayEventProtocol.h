@@ -9,6 +9,8 @@
 #ifndef BFDisplayEventProtocol_h
 #define BFDisplayEventProtocol_h
 
+#import "BFEventModel.h"
+
 /**
  参数传递block
 
@@ -23,7 +25,7 @@ typedef void (^BFEventManagerDoneBlock)();
  */
 @protocol BFDisplayProtocol <NSObject>
 
-- (void)displayWithModel:(BFEventManagerBlock)eventBlock;
+- (void)em_displayWithModel:(BFEventManagerBlock)eventBlock;
 
 @end
 
@@ -34,12 +36,12 @@ typedef void (^BFEventManagerDoneBlock)();
  */
 @protocol BFEventManagerProtocol <NSObject>
 
-- (void)didSelectItemWithModel:(BFEventModel *)eventModel;
+- (void)em_didSelectItemWithModel:(BFEventModel *)eventModel;
 
-- (void)didSelectItemWithModelBlock:(BFEventManagerBlock)eventBlock;
+- (void)em_didSelectItemWithModelBlock:(BFEventManagerBlock)eventBlock;
 
 @required
-- (NSString *)eventManagerWithPropertName;
+- (NSString *)em_eventManagerWithPropertName;
 
 @end
 

@@ -34,9 +34,9 @@
     return self;
 }
 
-- (void)didSelectItemWithEventType:(NSInteger)eventType {
+- (void)em_didSelectItemWithEventType:(NSInteger)eventType {
 
-    [self didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+    [self em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
         eventModel.eventType = eventType;
     }];
     
