@@ -79,4 +79,4 @@ pod lib lint --verbose --use-libraries --allow-warnings
 # --use-libraries  : 私有库、静态库引用的时候加上
 # —verbose ： lint显示详情
 
-pod repo push $podspecName.podspec --use-libraries --allow-warnings --verbose
+pod trunk push $podspecName.podspec --use-libraries --allow-warnings --verbose
