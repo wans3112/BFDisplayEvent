@@ -9,10 +9,10 @@
 #ifndef BFDisplayEvent_h
 #define BFDisplayEvent_h
 
-#import "BFDisplayEventProtocol.h"
-#import "BFEventManager.h"
-#import "BFEventModel.h"
-#import "BFPropertyExchange.h"
-#import "UIResponder+EventManager.h"
+#import <BFDisplayEvent/BFDisplayEventProtocol.h>
+#import <BFDisplayEvent/BFEventManager.h>
+#import <BFDisplayEvent/BFEventModel.h>
+#import <BFDisplayEvent/BFPropertyExchange.h>
+#import <BFDisplayEvent/UIResponder+EventManager.h>
 
 #endif /* BFDisplayEvent_h */
