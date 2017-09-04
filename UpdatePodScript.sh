@@ -73,7 +73,7 @@ privateSpecs="https://github.com/wans3112/Specs.git"
 #pod repo remove iOSPod LYCache.podspec
 #,http://iOS:123456@192.168.10.224:3000/iOS/iOSPod.git
 
-pod lib lint --sources=$publicSpecs,$privateSpecs --verbose --use-libraries --allow-warnings
+pod lib lint --verbose --use-libraries --allow-warnings
 
 # --allow-warnings : 允许 警告，有一些警告是代码自身带的。
 # --use-libraries  : 私有库、静态库引用的时候加上
