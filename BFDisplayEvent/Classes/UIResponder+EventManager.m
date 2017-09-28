@@ -18,6 +18,43 @@ static void *kEventManagerKey = &kEventManagerKey;
     [self.em_viewController setValue:value forKey:key];
 }
 
+- (void)em_SetParamsValue:(id)value key:(NSString *)key {
+    
+    NSMutableDictionary *em_params = objc_getAssociatedObject(self.em_viewController, "em_params");
+    if ( !em_params ) {
+        em_params = [@{} mutableCopy];
+    }
+    
+    em_params[key] = value;
+    
+    if ( self.em_viewController ) {
+        objc_setAssociatedObject(self.em_viewController, "em_params", em_params, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+}
+
+- (void)setEm_params:(NSMutableDictionary *)em_params {
+    
+    NSMutableDictionary *em_params_temp = objc_getAssociatedObject(self.em_viewController, "em_params");
+    if ( !em_params_temp ) {
+        em_params_temp = [@{} mutableCopy];
+        
+        if ( self.em_viewController ) {
+            objc_setAssociatedObject(self.em_viewController, "em_params", em_params_temp, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+}
+- (NSMutableDictionary *)em_params {
+    
+    NSMutableDictionary *em_params_temp = objc_getAssociatedObject(self.em_viewController, "em_params");
+    if ( !em_params_temp ) {
+        em_params_temp = [@{} mutableCopy];
+        
+        if ( self.em_viewController ) {
+            objc_setAssociatedObject(self.em_viewController, "em_params", em_params_temp, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+}
 #pragma mark - Getter&&Setter
 
 - (BFEventManager *)eventManager {
@@ -92,6 +129,20 @@ static void *kEventManagerKey = &kEventManagerKey;
         __strong typeof(self) strongSelf = weakSelf;
         
        return [strongSelf.em_viewController valueForKey:key];
+    };
+    
+    return icp_block;
+}
+
+- (void)setEm_ParamForKey:(BFSetValueForKeyBlock)em_ParamForKey {}
+
+- (BFSetValueForKeyBlock)em_ParamForKey {
+    
+    __weak typeof(self) weakSelf = self;
+    id (^icp_block)(NSString *key) = ^id (NSString *key) {
+        __strong typeof(self) strongSelf = weakSelf;
+        NSMutableDictionary *em_params = objc_getAssociatedObject(strongSelf.em_viewController, "em_params");
+        return em_params[key];
     };
     
     return icp_block;

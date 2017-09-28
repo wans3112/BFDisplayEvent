@@ -35,4 +35,9 @@
     self.label.text = model.title;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self em_SetParamsValue:@"wans" key:@"can"];
+}
+
 @end

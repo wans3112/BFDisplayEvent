@@ -91,6 +91,12 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *vlue = self.em_ParamForKey(@"can");
+    NSLog(@"%@", vlue);
+}
+
 - (BFEventManager *)eventManager {
     if( !_eventManager ) {
         _eventManager = [[NSClassFromString(@"ExampleManager") alloc] initWithTarget:self];

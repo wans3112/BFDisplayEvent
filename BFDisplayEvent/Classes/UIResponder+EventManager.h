@@ -25,6 +25,11 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 @property (nonatomic, copy)   BFSetValueForKeyBlock      em_ValueForKey;
 
 /**
+ 通过key获取controller params
+ */
+@property (nonatomic, copy)   BFSetValueForKeyBlock      em_ParamForKey;
+
+/**
  获取model
  */
 @property (nonatomic, strong) BFEventModelBlock          em_Model;
@@ -33,6 +38,8 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  获取事件管理器
  */
 @property (nonatomic, strong) BFEventManager             *eventManager;
+
+@property (nonatomic, strong) NSMutableDictionary        *em_params;
 
 /**
  初始化获取参数
@@ -47,5 +54,13 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  @param key key
  */
 - (void)em_SetValue:(id)value key:(NSString *)key;
+
+/**
+ 给target设置参数
+ 
+ @param value 新值
+ @param key key
+ */
+- (void)em_SetParamsValue:(id)value key:(NSString *)key;
 
 @end
