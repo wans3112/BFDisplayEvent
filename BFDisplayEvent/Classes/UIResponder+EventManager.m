@@ -32,29 +32,6 @@ static void *kEventManagerKey = &kEventManagerKey;
     }
 }
 
-- (void)setEm_params:(NSMutableDictionary *)em_params {
-    
-    NSMutableDictionary *em_params_temp = objc_getAssociatedObject(self.em_viewController, "em_params");
-    if ( !em_params_temp ) {
-        em_params_temp = [@{} mutableCopy];
-        
-        if ( self.em_viewController ) {
-            objc_setAssociatedObject(self.em_viewController, "em_params", em_params_temp, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-    }
-}
-- (NSMutableDictionary *)em_params {
-    
-    NSMutableDictionary *em_params_temp = objc_getAssociatedObject(self.em_viewController, "em_params");
-    if ( !em_params_temp ) {
-        em_params_temp = [@{} mutableCopy];
-        
-        if ( self.em_viewController ) {
-            objc_setAssociatedObject(self.em_viewController, "em_params", em_params_temp, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-    }
-    
-}
 #pragma mark - Getter&&Setter
 
 - (BFEventManager *)eventManager {

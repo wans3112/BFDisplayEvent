@@ -39,8 +39,6 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  */
 @property (nonatomic, strong) BFEventManager             *eventManager;
 
-@property (nonatomic, strong) NSMutableDictionary        *em_params;
-
 /**
  初始化获取参数
  */
