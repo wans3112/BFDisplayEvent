@@ -13,7 +13,7 @@
 typedef id (^BFSetValueForKeyBlock)(NSString *key);
 
 /**
- 默认调用，按vc区分
+ 通用事件调用宏，按vc做事件解耦
  */
 #define EventInvocationDefault \
 if ( [self respondsToSelector:@selector(em_CommonEvents:)]) [self em_CommonEvents:eventModel]; \
@@ -44,16 +44,18 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  */
 @property (nonatomic, weak)   UIViewController                         *em_viewController;
 
-- (instancetype)initWithTarget:(id)targetView;
+/**
+ 与事件管理器绑定的Target
+ */
+@property (nonatomic, strong, readonly) id                             em_Target;
 
 /**
- 获取实例
- 
- @param instance 实例block
- @return EventModel实例
- */
-- (id)em_Setup:instance block:(BFEventManagerBlock) block;
+ 初始化
 
+ @param targetView 目标
+ @return self
+ */
+- (instancetype)initWithTarget:(id)targetView;
 
 /**
  将model转化为block
@@ -63,7 +65,6 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  */
 - (BFEventManagerBlock)em_Block:(BFEventModel *)model;
 
-
 /**
  简单跳转
 
@@ -72,6 +73,11 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 - (void)em_didSelectItemWithEventType:(NSInteger)eventType;
 
 
+/**
+ 通用事件点击事件回调，用于管理多个viewcontroller公用一个事件管理器的情况
+
+ @param eventModel 事件model
+ */
 - (void)em_CommonEvents:(BFEventModel *)eventModel;
 
 /**

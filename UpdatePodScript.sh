@@ -68,7 +68,7 @@ git push origin ${version}
 
 publicSpecs="https://github.com/CocoaPods/Specs.git"
 privateSpecs="https://github.com/wans3112/Specs.git"
-#privateSpecs="http://caohh:123456@192.168.10.224:3000/caohh/iOSPod.git"
+#privateSpecs="http://192.168.10.81/IOS/commline/iOSPod.git"
 
 #pod repo remove iOSPod LYCache.podspec
 #,http://iOS:123456@192.168.10.224:3000/iOS/iOSPod.git

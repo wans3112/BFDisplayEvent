@@ -35,15 +35,23 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 @property (nonatomic, strong) BFEventModelBlock          em_Model;
 
 /**
- 获取事件管理器
+ 获取事件管理器,默认选择最后一个
  */
 @property (nonatomic, strong) BFEventManager             *eventManager;
 
 /**
- 初始化获取参数
+ 事件管理器，当注册多个事件管理器时，通过key取eventManager
  */
-- (id)em_Setup:(id)instance block:(BFEventManagerBlock)block;
+@property (nonatomic, strong) BFSetValueForKeyBlock      em_ForKey;
 
+
+/**
+ 给当前target注册时事件管理器
+
+ @param em_ClassName 事件管理器子类
+ @return 事件管理器
+ */
+- (BFEventManager *)em_RegisterWithClassName:(NSString *)em_ClassName;
 
 /**
  通过kvc赋值

@@ -19,6 +19,20 @@
         case 2:
             NSLog(@"section 2 pressed");
             break;
+        case 3:
+            NSLog(@"master 3 pressed");
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)em_didSelectItemWithEventType:(NSInteger)eventType {
+    
+    switch ( eventType ) {
+            case 3:
+                NSLog(@"master 3 pressed");
+            break;
         default:
             break;
     }

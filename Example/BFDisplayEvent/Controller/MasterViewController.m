@@ -54,6 +54,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"BFCell2TableViewCell" bundle:nil] forCellReuseIdentifier:@"BFCell2TableViewCell"];
 
     self.tableView.estimatedRowHeight = 44;
+    
+//    [self em_RegisterWithClassName:@"ExampleManager"];
 }
 
 
@@ -95,6 +97,10 @@
     
     NSString *vlue = self.em_ParamForKey(@"can");
     NSLog(@"%@", vlue);
+    
+//    [self.eventManager  em_didSelectItemWithEventType:3];
+//    [self.em_ForKey(@"ExampleManager")  em_didSelectItemWithEventType:3];
+
 }
 
 - (BFEventManager *)eventManager {

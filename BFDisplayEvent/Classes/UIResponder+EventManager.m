@@ -9,7 +9,35 @@
 #import "UIResponder+EventManager.h"
 #import "objc/runtime.h"
 
-static void *kEventManagerKey = &kEventManagerKey;
+static const void *kEventManagerKey = &kEventManagerKey;
+static const void *kem_eventManagersKey = &kem_eventManagersKey;
+static const void *kem_paramsKey = &kem_paramsKey;
+
+@interface UIResponder (_EventManager)
+
+/**
+ 所有的事件管理器
+ */
+@property (nonatomic, strong) NSMutableDictionary<NSString *, BFEventManager*>      *em_eventManagers;
+
+@end
+
+@implementation UIResponder (_EventManager)
+
+- (void)setEm_eventManagers:(NSMutableDictionary<NSString *,BFEventManager *> *)em_eventManagers {
+    objc_setAssociatedObject(self.em_viewController, kem_eventManagersKey, em_eventManagers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (NSMutableDictionary<NSString *, BFEventManager*> *)em_eventManagers {
+    NSMutableDictionary *em_eventManagers = objc_getAssociatedObject(self.em_viewController, kem_eventManagersKey);
+    if ( !em_eventManagers ) {
+        em_eventManagers = @{}.mutableCopy;
+        
+        self.em_eventManagers = em_eventManagers;
+    }
+    return em_eventManagers;
+}
+
+@end
 
 @implementation UIResponder (EventManager)
 
@@ -20,7 +48,7 @@ static void *kEventManagerKey = &kEventManagerKey;
 
 - (void)em_SetParamsValue:(id)value key:(NSString *)key {
     
-    NSMutableDictionary *em_params = objc_getAssociatedObject(self.em_viewController, "em_params");
+    NSMutableDictionary *em_params = objc_getAssociatedObject(self.em_viewController, kem_paramsKey);
     if ( !em_params ) {
         em_params = [@{} mutableCopy];
     }
@@ -32,41 +60,27 @@ static void *kEventManagerKey = &kEventManagerKey;
     }
 }
 
+- (BFEventManager *)em_RegisterWithClassName:(NSString *)em_ClassName {
+    
+    BFEventManager *tempEventManager = [[NSClassFromString(em_ClassName) alloc] initWithTarget:self];
+
+    self.eventManager = tempEventManager;
+    self.em_eventManagers[em_ClassName] = tempEventManager;
+    
+    return tempEventManager;
+}
+
 #pragma mark - Getter&&Setter
+
+- (void)setEventManager:(BFEventManager *)eventManager {
+    
+    objc_setAssociatedObject(self, kEventManagerKey, eventManager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 - (BFEventManager *)eventManager {
     
     BFEventManager *tempEventManager = objc_getAssociatedObject(self, kEventManagerKey);
-    if ( !tempEventManager ) {
-        
-        UIViewController<BFEventManagerProtocol> *controller = (UIViewController<BFEventManagerProtocol> *)self.em_viewController;
-        
-        if ( [controller respondsToSelector:@selector(em_eventManagerWithPropertName)]) {
-            
-            NSString *propertyName = [controller em_eventManagerWithPropertName];
-            
-            tempEventManager =  [controller valueForKey:propertyName];
-            
-        } else {
-        
-            unsigned int propertCount = 0;
-            objc_property_t *properts = class_copyPropertyList(controller.class, &propertCount);
-            for (int i = 0; i < propertCount; i++) {
-                objc_property_t property = properts[i];
-                NSString *propertyName = [NSString stringWithUTF8String:property_getName(property)];
-//                NSString *property_Attributes = [NSString stringWithUTF8String:property_getAttributes(property)];
-
-                id tempPropert = [controller valueForKey:propertyName];
-                if ( tempPropert && [tempPropert isKindOfClass:[BFEventManager class]] ) {
-                    tempEventManager =  tempPropert;
-                    break;
-                }
-            }
-            free(properts);
-        }
-        
-        objc_setAssociatedObject(self, kEventManagerKey, tempEventManager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
+    NSAssert(tempEventManager, @"请先通过'registerEventManagerClassName' 注册事件管理器！！");
     
     return tempEventManager;
 }
@@ -87,7 +101,6 @@ static void *kEventManagerKey = &kEventManagerKey;
     return nil;
 }
 
-- (void)setEventManager:(BFEventManager *)eventManager {}
 - (void)setEm_viewController:(UIViewController *)em_viewController {}
 
 - (id)em_Setup:(id)instance block:(BFEventManagerBlock)block {
@@ -118,7 +131,7 @@ static void *kEventManagerKey = &kEventManagerKey;
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
         __strong typeof(self) strongSelf = weakSelf;
-        NSMutableDictionary *em_params = objc_getAssociatedObject(strongSelf.em_viewController, "em_params");
+        NSMutableDictionary *em_params = objc_getAssociatedObject(strongSelf.em_viewController, kem_paramsKey);
         return em_params[key];
     };
     
@@ -138,6 +151,19 @@ static void *kEventManagerKey = &kEventManagerKey;
     
     return eventModel_block;
     
+}
+
+- (void)setEm_ForKey:(BFSetValueForKeyBlock)em_ForKey {}
+
+- (BFSetValueForKeyBlock)em_ForKey {
+    
+    __weak typeof(self) weakSelf = self;
+    id (^icp_block)(NSString *key) = ^id (NSString *key) {
+        __strong typeof(self) strongSelf = weakSelf;
+        return strongSelf.em_eventManagers[key];
+    };
+    
+    return icp_block;
 }
 
 @end

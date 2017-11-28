@@ -10,7 +10,7 @@
 
 @interface BFEventManager ()
 
-@property (nonatomic, strong) id                                   em_View;
+@property (nonatomic, strong, readwrite) id                                   em_Target;
 
 @end
 
@@ -25,11 +25,11 @@
 
 - (void)didSelectItemWithModelBlock:(BFEventManagerBlock)eventBlock {}
 
-- (instancetype)initWithTarget:(id)targetView {
+- (instancetype)initWithTarget:(id)target {
 
     self = [super init];
     if ( self ) {
-        self.em_View = targetView;
+        self.em_Target = target;
     }
     return self;
 }
@@ -78,11 +78,11 @@
 
 - (UIViewController *)em_viewController {
     
-    if ([self.em_View isKindOfClass:[UIViewController class]]) {
-        return (UIViewController *)self.em_View;
+    if ([self.em_Target isKindOfClass:[UIViewController class]]) {
+        return (UIViewController *)self.em_Target;
     }
     
-    UIView *selfView = (UIView *)self.em_View;
+    UIView *selfView = (UIView *)self.em_Target;
     for (UIView *view = selfView; view; view = view.superview) {
         UIResponder *nextResponder = [view nextResponder];
         if ([nextResponder isKindOfClass:[UIViewController class]]) {

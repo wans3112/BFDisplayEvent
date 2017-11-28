@@ -19,7 +19,7 @@ _Pragma("clang diagnostic pop") \
 
 static void *kPropertyNameKey = &kPropertyNameKey;
 
-@implementation NSObject (PropertyExchange)
+@implementation NSObject (_PropertyExchange)
 
 #pragma mark - Getter&&Setter
 

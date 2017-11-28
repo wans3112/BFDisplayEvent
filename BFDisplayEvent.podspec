@@ -3,12 +3,12 @@
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# To learn more about a Podspec see http://192.168.10.81/IOS/commline/podspec.html
 #
 
 Pod::Spec.new do |s|
   s.name             = 'BFDisplayEvent'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = '数据显示与点击事件与controller解耦'
 
 # This description is used to generate tags and improve search results.
