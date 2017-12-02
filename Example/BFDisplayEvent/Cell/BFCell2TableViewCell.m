@@ -38,7 +38,7 @@
     BFEventModel *theModel = self.em_Model(eventBlock);
     
     BFModel *model = theModel.model;
-    
+    NSLog(@"model.title:%@", model.title);
     // 此处传入本为BFModel2，并无title字段，具体参考BFModel2查看
     [self.button setTitle:model.title forState:UIControlStateNormal];
     [self.button addActionHandler:^(NSInteger tag) {

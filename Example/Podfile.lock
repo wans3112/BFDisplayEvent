@@ -1,5 +1,5 @@
 PODS:
-  - BFDisplayEvent (0.1.0)
+  - BFDisplayEvent (1.0.5)
   - Expecta (1.0.6)
   - Expecta+Snapshots (3.1.1):
     - Expecta (~> 1.0)
@@ -10,7 +10,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - Specta (1.0.6)
+  - Specta (1.0.7)
 
 DEPENDENCIES:
   - BFDisplayEvent (from `../`)
@@ -24,12 +24,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BFDisplayEvent: 6ba986bbb3513f0f79c1f0900a2dbfaa6523dfa6
+  BFDisplayEvent: 9d4c6581596a90441dc424eb4f91e7ff8c8a9afe
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Expecta+Snapshots: dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: ed3bef09d41465c8cf2f2bbd935422930d40e239
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0.beta.2

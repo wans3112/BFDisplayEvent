@@ -14,7 +14,6 @@
 @interface MasterViewController ()
 
 @property (nonatomic, strong) NSMutableArray *objects;
-@property (nonatomic, strong) BFEventManager  *eventManager;
 
 @end
 
@@ -36,12 +35,16 @@
             [self.objects addObject:tempArr];
             
         }else {
-        
             
             NSMutableArray *tempArr = [@[] mutableCopy];
             for (int i = 0; i < 2; i++) {
                 BFModel2 *model = [[BFModel2 alloc] init];
                 model.name = [NSString stringWithFormat:@"button %lu／%d",(unsigned long)self.objects.count, i + 1];
+                
+                BFModel *model_ = [[BFModel alloc] init];
+                model_.title = [NSString stringWithFormat:@"index %d",i + 1];
+                model.model = model_;
+                
                 [tempArr addObject:model];
             }
             [self.objects addObject:tempArr];
@@ -55,7 +58,7 @@
 
     self.tableView.estimatedRowHeight = 44;
     
-//    [self em_RegisterWithClassName:@"ExampleManager"];
+    [self em_RegisterWithClassName:@"ExampleManager"];
 }
 
 
@@ -95,19 +98,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *vlue = self.em_ParamForKey(@"can");
-    NSLog(@"%@", vlue);
+//    NSString *vlue = self.em_ParamForKey(@"can");
+//    NSLog(@"%@", vlue);
     
 //    [self.eventManager  em_didSelectItemWithEventType:3];
 //    [self.em_ForKey(@"ExampleManager")  em_didSelectItemWithEventType:3];
 
-}
-
-- (BFEventManager *)eventManager {
-    if( !_eventManager ) {
-        _eventManager = [[NSClassFromString(@"ExampleManager") alloc] initWithTarget:self];
-    }
-    return _eventManager;
 }
 
 @end

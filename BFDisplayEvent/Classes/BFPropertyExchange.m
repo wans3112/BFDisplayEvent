@@ -70,16 +70,7 @@ static void *kPropertyNameKey = &kPropertyNameKey;
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
     
     NSString *propertyName = NSStringFromSelector(aSelector);
-    
     NSDictionary *propertyDic = [self em_exchangeKeyFromPropertyName];
-    
-    NSMethodSignature* (^doGetMethodSignature)(NSString *propertyName) = ^(NSString *propertyName){
-    
-        NSMethodSignature *methodSignature = [NSMethodSignature signatureWithObjCTypes:"v@:"];
-        objc_setAssociatedObject(methodSignature, kPropertyNameKey, propertyName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
-        return  [NSMethodSignature signatureWithObjCTypes:"v@:"];
-    };
     
     if ( [propertyDic.allKeys containsObject:propertyName] ) {
         
@@ -89,7 +80,11 @@ static void *kPropertyNameKey = &kPropertyNameKey;
             targetPropertyName = [propertyDic objectForKey:propertyName];
         }
         
-        return doGetMethodSignature(targetPropertyName);
+        SEL targetselector = NSSelectorFromString(targetPropertyName);
+        NSMethodSignature *methodSignature = [[self class] instanceMethodSignatureForSelector:targetselector];
+        objc_setAssociatedObject(methodSignature, kPropertyNameKey, targetPropertyName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        
+        return methodSignature;
     }
     
     return [super methodSignatureForSelector:aSelector];
@@ -98,9 +93,10 @@ static void *kPropertyNameKey = &kPropertyNameKey;
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     
     NSString *originalPropertyName = objc_getAssociatedObject(anInvocation.methodSignature, kPropertyNameKey);
-    
+
     if ( originalPropertyName ) {
-        anInvocation.selector = NSSelectorFromString(originalPropertyName);
+        SEL selector = NSSelectorFromString(originalPropertyName);
+        anInvocation.selector = selector;
         [anInvocation invokeWithTarget:self];
     }
     

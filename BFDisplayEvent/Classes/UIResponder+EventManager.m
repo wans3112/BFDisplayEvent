@@ -74,12 +74,12 @@ static const void *kem_paramsKey = &kem_paramsKey;
 
 - (void)setEventManager:(BFEventManager *)eventManager {
     
-    objc_setAssociatedObject(self, kEventManagerKey, eventManager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self.em_viewController, kEventManagerKey, eventManager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BFEventManager *)eventManager {
     
-    BFEventManager *tempEventManager = objc_getAssociatedObject(self, kEventManagerKey);
+    BFEventManager *tempEventManager = objc_getAssociatedObject(self.em_viewController, kEventManagerKey);
     NSAssert(tempEventManager, @"请先通过'registerEventManagerClassName' 注册事件管理器！！");
     
     return tempEventManager;
