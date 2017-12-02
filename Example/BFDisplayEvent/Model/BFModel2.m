@@ -12,12 +12,12 @@
 
 - (NSDictionary *)em_exchangeKeyFromPropertyName{
 
-    return @{@"title":@"model"};
+    return @{@"title":@"name"};
 }
 
-//- (NSString *)em_title {
-//    
-//    return [_name stringByAppendingString:@"ddd"];
-//}
+- (NSString *)em_title {
+    
+    return [_name stringByAppendingString:@"ddd"];
+}
 
 @end
