@@ -1,5 +1,5 @@
 //
-//  BFPropertyExchange.h
+//  NSObject+PropertyExchange.h
 //  HomePage https://github.com/wans3112/BFDisplayEvent
 //
 //  Created by wans on 2017/4/10.
@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BFPropertyExchangeProtocol <NSObject>
-
-- (NSDictionary *)em_exchangeKeyFromPropertyName;
-
-@end
-
 @interface NSObject (PropertyExchange)
 
 /**
@@ -21,9 +15,13 @@
  */
 @property (nonatomic, copy) id(^em_property)(NSString *propertyName);
 
-@end
 
-@interface BFPropertyExchange : NSObject<BFPropertyExchangeProtocol>
-
+/**
+ 返回对象的消息映射
+ eg：如果model只有title字段,但model调用title2字段，则在model类现实该方法，并返回字典{@"title2":@"title"}
+ 
+ @return 消息映射字典
+ */
+- (NSDictionary *)em_exchangeKeyFromPropertyName;
 
 @end

@@ -8,8 +8,8 @@
 
 #import "BFCell2TableViewCell.h"
 #import "BFModel.h"
-#import "UIResponder+EventManager.h"
 #import "UIButton+Block.h"
+#import <BFDisplayEvent/BFDisplayEvent.h>
 
 @interface BFCell2TableViewCell ()
 @property (weak, nonatomic) IBOutlet UIButton *button;

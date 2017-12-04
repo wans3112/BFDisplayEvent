@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BFPropertyExchange.h"
 #import "BFModel.h"
 
-@interface BFModel2 : BFPropertyExchange
+@interface BFModel2 : NSObject
 
 @property (nonatomic,strong) NSString *name;
 

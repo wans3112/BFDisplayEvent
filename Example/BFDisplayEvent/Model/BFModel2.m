@@ -17,7 +17,7 @@
 
 - (NSString *)em_title {
     
-    return [_name stringByAppendingString:@"ddd"];
+    return [_name stringByAppendingString:@"_ddd"];
 }
 
 @end
