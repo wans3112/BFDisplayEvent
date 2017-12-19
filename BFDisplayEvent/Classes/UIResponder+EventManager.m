@@ -56,7 +56,7 @@ static const void *kem_paramsKey = &kem_paramsKey;
     em_params[key] = value;
     
     if ( self.em_viewController ) {
-        objc_setAssociatedObject(self.em_viewController, "em_params", em_params, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self.em_viewController, kem_paramsKey, em_params, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
 }
 
