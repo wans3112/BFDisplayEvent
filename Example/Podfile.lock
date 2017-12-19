@@ -1,5 +1,5 @@
 PODS:
-  - BFDisplayEvent (1.0.6)
+  - BFDisplayEvent (1.0.7)
   - Expecta (1.0.6)
   - Expecta+Snapshots (3.1.1):
     - Expecta (~> 1.0)
@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BFDisplayEvent: ee89b83c1a68bed2c68dd822cbfc1ed001ee04a6
+  BFDisplayEvent: 2d1388ff2a6edca79561b81c88ed6b8e3cc9682d
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   Expecta+Snapshots: dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
