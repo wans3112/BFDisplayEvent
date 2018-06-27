@@ -10,6 +10,7 @@
 #import "BFModel.h"
 #import "BFModel2.h"
 #import <BFDisplayEvent/BFDisplayEvent.h>
+#import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
 
 @interface MasterViewController ()
 
@@ -58,9 +59,10 @@
 
     self.tableView.estimatedRowHeight = 44;
     
+    // 注册事件管理器
     [self em_RegisterWithClassName:@"ExampleManager"];
-}
 
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
@@ -101,8 +103,11 @@
 //    NSString *vlue = self.em_ParamForKey(@"can");
 //    NSLog(@"%@", vlue);
     
-//    [self.eventManager  em_didSelectItemWithEventType:3];
-//    [self.em_ForKey(@"ExampleManager")  em_didSelectItemWithEventType:3];
+    if ( indexPath.section == 1 ) {
+        [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+            eventModel.indexPath = indexPath;
+        }];
+    }
 
 }
 

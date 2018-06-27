@@ -7,6 +7,7 @@
 //
 
 #import "BFEventManager.h"
+#import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
 
 @interface BFEventManager ()
 
@@ -104,6 +105,44 @@
     };
     
     return icp_block;
+}
+
+- (void)em_handleUpdateTargetWithKeys:(NSArray *)keys eventBlock:(id)eventBlock {
+    
+    if (eventBlock == nil) return;
+    id target = [eventBlock  copy];
+    
+    CTBlockDescription *ct = [[CTBlockDescription alloc] initWithBlock:target];
+    NSMethodSignature *methodSignature = ct.blockSignature;
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+    invocation.target = target;
+    
+    // invocation 有1个隐藏参数，所以 argument 从1开始
+    if ([keys isKindOfClass:[NSArray class]]) {
+        NSInteger count = MIN(keys.count, methodSignature.numberOfArguments - 1);
+        for (int i = 0; i < count; i++) {
+            const char *type = [methodSignature getArgumentTypeAtIndex:1 + i];
+            NSString *typeStr = [NSString stringWithUTF8String:type];
+            if ([typeStr containsString:@"\""]) {
+                type = [typeStr substringToIndex:1].UTF8String;
+            }
+            
+            // 需要做参数类型判断然后解析成对应类型，这里默认所有参数均为OC对象
+            if (strcmp(type, "@") == 0) {
+                id argument = keys[i];
+                
+                if ( [argument isEqualToString:@"self"] ) {
+                    argument = self.em_viewController;
+                }else {
+                    argument = self.em_ValueForKey(argument);
+                }
+                [invocation setArgument:&argument atIndex:1 + i];
+            }
+        }
+    }
+    
+    // 执行block
+    [invocation invoke];
 }
 
 @end

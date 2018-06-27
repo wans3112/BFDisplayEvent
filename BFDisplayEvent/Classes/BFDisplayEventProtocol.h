@@ -17,7 +17,7 @@
  @param eventModel 参数model
  */
 typedef void (^BFEventManagerBlock)(BFEventModel* eventModel);
-typedef void (^BFEventManagerDoneBlock)();
+typedef void (^BFEventManagerDoneBlock)(void);
 
 
 /**

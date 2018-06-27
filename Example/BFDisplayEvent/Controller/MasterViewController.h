@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^LYBlock)(void);
 @interface MasterViewController : UITableViewController
 
 
