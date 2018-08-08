@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHL-l3-moj">
-                        <rect key="frame" x="40" y="27" width="202" height="41"/>
+                        <rect key="frame" x="16" y="27" width="154" height="41"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="202" id="Zhz-L2-laa"/>
+                            <constraint firstAttribute="width" constant="154" id="Zhz-L2-laa"/>
                             <constraint firstAttribute="height" constant="41" id="ueU-gI-4vz"/>
                         </constraints>
                         <state key="normal" title="点击我"/>
@@ -31,16 +31,27 @@
                             <action selector="buttonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FT2-gW-fPk"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMv-zJ-kYa">
+                        <rect key="frame" x="262" y="37" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="YMv-zJ-kYa" secondAttribute="trailing" constant="16" id="4EG-ne-tuf"/>
                     <constraint firstItem="lHL-l3-moj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="QG9-8d-iT6"/>
-                    <constraint firstItem="lHL-l3-moj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="VQq-B9-SvV"/>
+                    <constraint firstItem="lHL-l3-moj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="VQq-B9-SvV"/>
                     <constraint firstItem="lHL-l3-moj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="k5m-cP-77b"/>
                     <constraint firstAttribute="bottomMargin" secondItem="lHL-l3-moj" secondAttribute="bottom" constant="16" id="xwv-Gs-ndP"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="YMv-zJ-kYa" firstAttribute="centerY" secondItem="KGk-i7-Jjw" secondAttribute="centerY" id="TLo-mp-iQd"/>
+            </constraints>
             <connections>
                 <outlet property="button" destination="lHL-l3-moj" id="xfB-KY-WZv"/>
+                <outlet property="label" destination="YMv-zJ-kYa" id="teZ-vj-v53"/>
             </connections>
             <point key="canvasLocation" x="-278" y="-96.5"/>
         </tableViewCell>

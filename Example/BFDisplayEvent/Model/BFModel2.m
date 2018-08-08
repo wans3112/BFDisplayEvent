@@ -20,4 +20,9 @@
     return [_name stringByAppendingString:@"_ddd"];
 }
 
+
+- (void)dealloc {
+    
+}
+
 @end

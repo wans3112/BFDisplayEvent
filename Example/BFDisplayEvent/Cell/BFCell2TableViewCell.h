@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BFCell2Protocol <NSObject>
+
+@property (nonatomic, weak, readonly) id                                   model;
+
+@property (nonatomic,strong) NSString *name;
+
+@end
+
 @interface BFCell2TableViewCell : UITableViewCell
 
 @end

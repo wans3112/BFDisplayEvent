@@ -11,7 +11,7 @@
 
 @interface BFEventManager ()
 
-@property (nonatomic, strong, readwrite) id                                   em_Target;
+@property (nonatomic, weak, readwrite) id                                   em_Target;
 
 @end
 

@@ -7,8 +7,8 @@
 //
 
 #import "BFCell1TableViewCell.h"
-#import "BFModel.h"
 #import "UIResponder+EventManager.h"
+#import <BFDisplayEvent/BFDisplayEvent.h>
 
 @interface BFCell1TableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -31,8 +31,11 @@
 
     BFEventModel *theModel = self.em_Model(eventBlock);
 
-    BFModel *model = theModel.model;
+    NSObject<BFCell1Protocol> *model = theModel.model;
     self.label.text = model.title;
+    
+//    [model bindingWithPath:@"model.name"];
+    
 }
 
 - (void)layoutSubviews {

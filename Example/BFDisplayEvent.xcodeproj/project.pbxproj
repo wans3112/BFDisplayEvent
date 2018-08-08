@@ -19,6 +19,8 @@
 		2B3ABB8C1F45990B008C3DF2 /* ExampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB7F1F45990B008C3DF2 /* ExampleManager.m */; };
 		2B3ABB8D1F45990B008C3DF2 /* BFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB821F45990B008C3DF2 /* BFModel.m */; };
 		2B3ABB8E1F45990B008C3DF2 /* BFModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB841F45990B008C3DF2 /* BFModel2.m */; };
+		2B802EFB20F8425800E5AED4 /* BFMode2ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B802EFA20F8425800E5AED4 /* BFMode2ViewObject.m */; };
+		2B802EFE20F8482000E5AED4 /* BFMode1ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -66,6 +68,10 @@
 		2B3ABB821F45990B008C3DF2 /* BFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFModel.m; sourceTree = "<group>"; };
 		2B3ABB831F45990B008C3DF2 /* BFModel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFModel2.h; sourceTree = "<group>"; };
 		2B3ABB841F45990B008C3DF2 /* BFModel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFModel2.m; sourceTree = "<group>"; };
+		2B802EF920F8425800E5AED4 /* BFMode2ViewObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMode2ViewObject.h; sourceTree = "<group>"; };
+		2B802EFA20F8425800E5AED4 /* BFMode2ViewObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMode2ViewObject.m; sourceTree = "<group>"; };
+		2B802EFC20F8482000E5AED4 /* BFMode1ViewObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMode1ViewObject.h; sourceTree = "<group>"; };
+		2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMode1ViewObject.m; sourceTree = "<group>"; };
 		4A2F30586989214308616208 /* Pods_BFDisplayEvent_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BFDisplayEvent_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5897701A24F65EEAD5BDFEEF /* Pods-BFDisplayEvent_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* BFDisplayEvent_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFDisplayEvent_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +182,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2B802EF120F83C8E00E5AED4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2B802EF920F8425800E5AED4 /* BFMode2ViewObject.h */,
+				2B802EFA20F8425800E5AED4 /* BFMode2ViewObject.m */,
+				2B802EFC20F8482000E5AED4 /* BFMode1ViewObject.h */,
+				2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +230,7 @@
 		6003F593195388D20070C39A /* Example for BFDisplayEvent */ = {
 			isa = PBXGroup;
 			children = (
+				2B802EF120F83C8E00E5AED4 /* ViewModel */,
 				2B3ABB6E1F45990B008C3DF2 /* Category */,
 				2B3ABB711F45990B008C3DF2 /* Cell */,
 				2B3ABB781F45990B008C3DF2 /* Controller */,
@@ -294,7 +312,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				718036450CD5E66571E14255 /* [CP] Embed Pods Frameworks */,
-				6B328FED8570AA803D01D175 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,7 +331,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				8D94115E682E6FD8485553BF /* [CP] Embed Pods Frameworks */,
-				D220B73B6EEC2D8A16938182 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -385,21 +401,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B328FED8570AA803D01D175 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		718036450CD5E66571E14255 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,18 +429,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
-				"${BUILT_PRODUCTS_DIR}/Expecta+Snapshots/Expecta_Snapshots.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Specta/Specta.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta_Snapshots.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Specta.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -482,21 +475,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D220B73B6EEC2D8A16938182 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -509,9 +487,11 @@
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				2B3ABB8D1F45990B008C3DF2 /* BFModel.m in Sources */,
 				2B3ABB851F45990B008C3DF2 /* UIButton+Block.m in Sources */,
+				2B802EFB20F8425800E5AED4 /* BFMode2ViewObject.m in Sources */,
 				2B3ABB8C1F45990B008C3DF2 /* ExampleManager.m in Sources */,
 				2B3ABB8B1F45990B008C3DF2 /* MasterViewController.m in Sources */,
 				2B3ABB881F45990B008C3DF2 /* BFCell2TableViewCell.m in Sources */,
+				2B802EFE20F8482000E5AED4 /* BFMode1ViewObject.m in Sources */,
 				2B3ABB8E1F45990B008C3DF2 /* BFModel2.m in Sources */,
 				2B3ABB861F45990B008C3DF2 /* BFCell1TableViewCell.m in Sources */,
 				2B3ABB8A1F45990B008C3DF2 /* DetailViewController.m in Sources */,

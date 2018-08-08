@@ -14,4 +14,7 @@
 #import <BFDisplayEvent/BFEventModel.h>
 #import <BFDisplayEvent/UIResponder+EventManager.h>
 #import <BFDisplayEvent/NSObject+PropertyExchange.h>
+#import <BFDisplayEvent/BFViewObject.h>
+#import <BFDisplayEvent/BFVVMBindingContext.h>
+
 #endif /* BFDisplayEvent_h */

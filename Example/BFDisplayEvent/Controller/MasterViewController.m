@@ -11,6 +11,8 @@
 #import "BFModel2.h"
 #import <BFDisplayEvent/BFDisplayEvent.h>
 #import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
+#import "BFMode2ViewObject.h"
+#import "BFMode1ViewObject.h"
 
 @interface MasterViewController ()
 
@@ -31,7 +33,7 @@
             for (int i = 0; i < 3; i++) {
                 BFModel *model = [[BFModel alloc] init];
                 model.title = [NSString stringWithFormat:@"index %d",i + 1];
-                [tempArr addObject:model];
+                [tempArr addObject:[[BFMode1ViewObject alloc] initWithModel:model]];
             }
             [self.objects addObject:tempArr];
             
@@ -103,12 +105,19 @@
 //    NSString *vlue = self.em_ParamForKey(@"can");
 //    NSLog(@"%@", vlue);
     
-    if ( indexPath.section == 1 ) {
-        [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
-            eventModel.indexPath = indexPath;
-        }];
-    }
+//    if ( indexPath.section == 1 ) {
+//        [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+//            eventModel.indexPath = indexPath;
+//        }];
+//    }
+    
+    UIViewController *vc = [[NSClassFromString(@"MasterViewController") alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+- (void)dealloc {
+    
 }
 
 @end

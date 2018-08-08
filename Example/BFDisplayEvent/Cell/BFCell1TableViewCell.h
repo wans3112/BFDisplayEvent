@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "BFDisplayEventProtocol.h"
 
+@protocol BFCell1Protocol <NSObject>
+
+@property (nonatomic,strong) NSString *title;
+
+@end
+
+
 @interface BFCell1TableViewCell : UITableViewCell<BFDisplayProtocol>
 
 @end

@@ -47,7 +47,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 /**
  与事件管理器绑定的Target
  */
-@property (nonatomic, strong, readonly) id                             em_Target;
+@property (nonatomic, weak, readonly) id                               em_Target;
 
 /**
  初始化

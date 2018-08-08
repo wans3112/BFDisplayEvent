@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface BFModel : NSObject
 
 @property (nonatomic,strong) NSString *title;

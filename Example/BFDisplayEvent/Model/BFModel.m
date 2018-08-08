@@ -10,4 +10,7 @@
 
 @implementation BFModel
 
+- (void)dealloc {
+    
+}
 @end
