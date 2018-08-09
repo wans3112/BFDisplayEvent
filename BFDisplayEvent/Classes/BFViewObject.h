@@ -9,7 +9,7 @@
 
 @interface BFViewObject : NSObject
 
-@property (nonatomic, weak, readonly) id                                   model;
+@property (nonatomic, strong, readonly) id                                   model;
 
 - (instancetype)initWithModel:(id)model;
 

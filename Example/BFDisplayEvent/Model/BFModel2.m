@@ -10,15 +10,15 @@
 
 @implementation BFModel2
 
-- (NSDictionary *)em_exchangeKeyFromPropertyName{
+//- (NSDictionary *)em_exchangeKeyFromPropertyName{
+//
+//    return @{@"title":@"name"};
+//}
 
-    return @{@"title":@"name"};
-}
-
-- (NSString *)em_title {
-    
-    return [_name stringByAppendingString:@"_ddd"];
-}
+//- (NSString *)em_title {
+//    
+//    return [_name stringByAppendingString:@"_ddd"];
+//}
 
 
 - (void)dealloc {

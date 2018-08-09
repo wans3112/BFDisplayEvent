@@ -7,7 +7,10 @@
 //
 
 #import "BFViewObject.h"
+#import "BFModel2.h"
 
 @interface BFMode2ViewObject : BFViewObject
+
+- (BFModel2 *)model2;
 
 @end

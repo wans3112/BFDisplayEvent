@@ -1,16 +1,13 @@
 PODS:
-  - Aspects (1.4.1)
   - BFDisplayEvent (1.0.6):
     - CTObjectiveCRuntimeAdditions
   - CTObjectiveCRuntimeAdditions (0.0.1)
 
 DEPENDENCIES:
-  - Aspects
   - BFDisplayEvent (from `../`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Aspects
     - CTObjectiveCRuntimeAdditions
 
 EXTERNAL SOURCES:
@@ -18,10 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   BFDisplayEvent: ac29145623e8f49936e6cb5e60d5f0c88b636d70
   CTObjectiveCRuntimeAdditions: e4164f82d489d542447a1ae35b27965b356c4738
 
-PODFILE CHECKSUM: a64289f5f04aeaf6f5ac7bcca7111f9738a42cf4
+PODFILE CHECKSUM: ab34ea20373d156ceec3e5cb1a8e9d21c970abb4
 
 COCOAPODS: 1.5.3

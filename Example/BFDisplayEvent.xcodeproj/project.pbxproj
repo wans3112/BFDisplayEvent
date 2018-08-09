@@ -330,7 +330,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				8D94115E682E6FD8485553BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -419,24 +418,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D94115E682E6FD8485553BF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A61CF836F8DEFE4BF3F39D31 /* [CP] Check Pods Manifest.lock */ = {

@@ -9,7 +9,7 @@
 
 @interface BFViewObject ()
 
-@property (nonatomic, weak) id                                   model;
+@property (nonatomic, strong) id                                   model;
 
 @end
 

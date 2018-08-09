@@ -48,7 +48,7 @@
                 model_.title = [NSString stringWithFormat:@"index %d",i + 1];
                 model.model = model_;
                 
-                [tempArr addObject:model];
+                [tempArr addObject:[BFMode2ViewObject em_mfv:model]];
             }
             [self.objects addObject:tempArr];
             

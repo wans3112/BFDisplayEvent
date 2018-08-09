@@ -11,7 +11,7 @@ target 'BFDisplayEvent_Example' do
 #  pod 'FBSnapshotTestCase'
 #  pod 'Expecta+Snapshots'
 
-  pod 'Aspects'
+#  pod 'Aspects'
 
   end
 end

@@ -10,6 +10,8 @@
 #import <BFDisplayEvent/BFDisplayEvent.h>
 #import "MasterViewController.h"
 #import "BFModel2.h"
+#import "BFMode2ViewObject.h"
+#import "NSObject+BFKeyValue.h"
 
 @implementation ExampleManager
 
@@ -37,18 +39,15 @@
     NSLog(@"master %ld pressed", theModel.indexPath.row);
 
     NSIndexPath *indexPath = theModel.indexPath;
-    [self em_handleUpdateTargetWithKeys:@[@"self",@"objects"] eventBlock:^(MasterViewController *vc, NSMutableArray<NSMutableArray *> *objects){
-        
-        NSMutableArray *temp = objects[indexPath.section];
-        
-        BFModel2 *model = temp[indexPath.row];
-        model.name = @"wans";
-        [temp replaceObjectAtIndex:indexPath.row withObject:model];
-        [objects replaceObjectAtIndex:indexPath.section withObject:temp];
-        
-//        [vc.tableView reloadData];
-//        NSLog(@"vc:%@\nobject:%@",vc, objects);
-    }];
+//    [self em_handleUpdateTargetWithKeys:@[@"self",@"objects"] eventBlock:^(MasterViewController *vc, NSMutableArray<NSMutableArray *> *objects){
+//
+//        NSString *path = [NSString stringWithFormat:@"[%ld.[%ld.model.name", indexPath.section, indexPath.row];
+//        [objects em_setValue:@"wans" forKeyPath:path];
+//
+//    }];
+    NSString *path = [NSString stringWithFormat:@"objects.[%ld.[%ld.model.name", indexPath.section, indexPath.row];
+    id objc =  [self.em_viewController em_valueForKeyPath:@"objects.[1.[1"];
+
 }
 
 - (void)em_didSelectItemWithEventType:(NSInteger)eventType {

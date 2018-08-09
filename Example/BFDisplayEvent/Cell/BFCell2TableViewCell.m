@@ -56,7 +56,7 @@
         }];
     }];
     
-    EMObserve(model, name, self.label, text);
+    EMVOObserve(model, name, self.label, text);
 //    EMObserve(model, name, self.label, textColor);
     
 //    EMVOObserveAction(model, name, ^(NSString *name){

@@ -13,7 +13,7 @@ static const void *kEventManagerKey = &kEventManagerKey;
 static const void *kem_eventManagersKey = &kem_eventManagersKey;
 static const void *kem_paramsKey = &kem_paramsKey;
 
-@interface UIResponder (_EventManager)
+@interface UIResponder (EventManagers)
 
 /**
  所有的事件管理器
@@ -22,11 +22,12 @@ static const void *kem_paramsKey = &kem_paramsKey;
 
 @end
 
-@implementation UIResponder (_EventManager)
+@implementation UIResponder (EventManagers)
 
 - (void)setEm_eventManagers:(NSMutableDictionary<NSString *,BFEventManager *> *)em_eventManagers {
     objc_setAssociatedObject(self.em_viewController, kem_eventManagersKey, em_eventManagers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 - (NSMutableDictionary<NSString *, BFEventManager*> *)em_eventManagers {
     NSMutableDictionary *em_eventManagers = objc_getAssociatedObject(self.em_viewController, kem_eventManagersKey);
     if ( !em_eventManagers ) {
@@ -62,7 +63,7 @@ static const void *kem_paramsKey = &kem_paramsKey;
 
 - (BFEventManager *)em_RegisterWithClassName:(NSString *)em_ClassName {
     
-    BFEventManager *tempEventManager = [[NSClassFromString(em_ClassName) alloc] initWithTarget:self];
+    BFEventManager *tempEventManager = [((BFEventManager *)[NSClassFromString(em_ClassName) alloc]) initWithTarget:self];
 
     self.eventManager = tempEventManager;
     self.em_eventManagers[em_ClassName] = tempEventManager;
@@ -91,14 +92,14 @@ static const void *kem_paramsKey = &kem_paramsKey;
         return (UIViewController *)self;
     }
     
-    UIView *selfView = (UIView *)self;
-    for (UIView *view = selfView; view; view = view.superview) {
-        UIResponder *nextResponder = [view nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            return (UIViewController *)nextResponder;
+    id target = self;
+    while (target) {
+        target = ((UIResponder *)target).nextResponder;
+        if ([target isKindOfClass:[UIViewController class]]) {
+            break;
         }
     }
-    return nil;
+    return target;
 }
 
 - (void)setEm_viewController:(UIViewController *)em_viewController {}

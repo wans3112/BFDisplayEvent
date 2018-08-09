@@ -7,7 +7,6 @@
 //
 
 #import "BFMode2ViewObject.h"
-#import "BFModel2.h"
 
 @implementation BFMode2ViewObject
 
@@ -20,6 +19,11 @@
     
     return self.model;
 }
+
+//- (NSDictionary *)em_exchangeKeyFromPropertyName{
+//    
+//    return @{@"title":@"name"};
+//}
 
 - (void)dealloc {
     
