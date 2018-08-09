@@ -138,9 +138,12 @@ void em_observervoPathAction(id model, NSString *observerPath, id targetAction) 
     
     // 销毁时移除所有监听
     if ( self.bindingManager ) {
+        __weak typeof(self) weakSelf = self;
         [self.bindingManager enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            [self removeObserver:self forKeyPath:key context:(__bridge void *)self];
-            [self.bindingManager removeObjectForKey:key];
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            
+            [strongSelf removeObserver:self forKeyPath:key context:(__bridge void *)self];
+            [strongSelf.bindingManager removeObjectForKey:key];
         }];
         self.bindingManager = nil;
     }

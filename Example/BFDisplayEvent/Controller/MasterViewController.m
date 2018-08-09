@@ -95,6 +95,7 @@
     id object = ((NSMutableArray *)self.objects[indexPath.section])[indexPath.row];
     [cell em_displayWithModel:^(BFEventModel *eventModel) {
         eventModel.model = object;
+        eventModel.indexPath = indexPath;
         eventModel.eventType = indexPath.section;//测试，区分不同section的事件是不同的(此处如果是另一个界面共用此cell，需要新建一个eventManager)
     }];
     return cell;
@@ -105,14 +106,14 @@
 //    NSString *vlue = self.em_ParamForKey(@"can");
 //    NSLog(@"%@", vlue);
     
-//    if ( indexPath.section == 1 ) {
-//        [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
-//            eventModel.indexPath = indexPath;
-//        }];
-//    }
+    if ( indexPath.section == 1 ) {
+        [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+            eventModel.indexPath = indexPath;
+        }];
+    }
     
-    UIViewController *vc = [[NSClassFromString(@"MasterViewController") alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    UIViewController *vc = [[NSClassFromString(@"MasterViewController") alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 
 }
 

@@ -17,6 +17,12 @@
 
 @interface NSObject (ModelForView)
 
+/**
+ 通过model生成ViewObject
+
+ @param model 数据model
+ @return ViewObject
+ */
 + (instancetype)em_mfv:(id)model;
 
 @end

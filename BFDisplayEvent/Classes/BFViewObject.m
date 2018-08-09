@@ -45,7 +45,7 @@
 @implementation NSObject (ModelForView)
 
 + (instancetype)em_mfv:(id)model {
-    return [[[self class] alloc] initWithModel:model];
+    return [((BFViewObject *)[self.class alloc]) initWithModel:model];
 }
 
 @end

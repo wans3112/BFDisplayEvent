@@ -46,8 +46,8 @@
         [temp replaceObjectAtIndex:indexPath.row withObject:model];
         [objects replaceObjectAtIndex:indexPath.section withObject:temp];
         
-        [vc.tableView reloadData];
-        NSLog(@"vc:%@\nobject:%@",vc, objects);
+//        [vc.tableView reloadData];
+//        NSLog(@"vc:%@\nobject:%@",vc, objects);
     }];
 }
 

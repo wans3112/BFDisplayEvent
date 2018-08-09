@@ -49,11 +49,15 @@
         // 暂不管循环引用
 //        UIViewController *vc = [[NSClassFromString(@"MasterViewController") alloc] init];
 //        [strongSelf.em_viewController.navigationController pushViewController:vc animated:YES];
-        model.name = UIColor.redColor;
+//        model.name = @"wb";
+        
+        [strongSelf.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+            eventModel.indexPath = theModel.indexPath;
+        }];
     }];
     
-//    EMObserve(model, name, self.label, text);
-    EMObserve(model, name, self.label, textColor);
+    EMObserve(model, name, self.label, text);
+//    EMObserve(model, name, self.label, textColor);
     
 //    EMVOObserveAction(model, name, ^(NSString *name){
 //        [self.button setTitle:name forState:UIControlStateNormal];
