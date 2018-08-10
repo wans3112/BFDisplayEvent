@@ -1,19 +1,19 @@
 //
-//  UIResponder+EventManager.m
+//  UIResponder+BFEventManager.m
 //  HomePage https://github.com/wans3112/BFDisplayEvent
 //
 //  Created by wans on 2017/4/12.
 //  Copyright © 2017年 wans,www.wans3112.cn All rights reserved.
 //
 
-#import "UIResponder+EventManager.h"
+#import "UIResponder+BFEventManager.h"
 #import "objc/runtime.h"
 
 static const void *kEventManagerKey = &kEventManagerKey;
 static const void *kem_eventManagersKey = &kem_eventManagersKey;
 static const void *kem_paramsKey = &kem_paramsKey;
 
-@interface UIResponder (EventManagers)
+@interface UIResponder (BFEventManagers)
 
 /**
  所有的事件管理器
@@ -22,7 +22,7 @@ static const void *kem_paramsKey = &kem_paramsKey;
 
 @end
 
-@implementation UIResponder (EventManagers)
+@implementation UIResponder (BFEventManagers)
 
 - (void)setEm_eventManagers:(NSMutableDictionary<NSString *,BFEventManager *> *)em_eventManagers {
     objc_setAssociatedObject(self.em_viewController, kem_eventManagersKey, em_eventManagers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -40,7 +40,7 @@ static const void *kem_paramsKey = &kem_paramsKey;
 
 @end
 
-@implementation UIResponder (EventManager)
+@implementation UIResponder (BFEventManager)
 
 - (void)em_SetValue:(id)value key:(NSString *)key {
     

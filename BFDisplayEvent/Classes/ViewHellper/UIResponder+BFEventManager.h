@@ -1,5 +1,5 @@
 //
-//  UIResponder+EventManager.h
+//  UIResponder+BFEventManager.h
 //  HomePage https://github.com/wans3112/BFDisplayEvent
 //
 //  Created by wans on 2017/4/12.
@@ -11,7 +11,7 @@
 
 typedef id (^BFSetValueForKeyBlock)(NSString *key);
 
-@interface UIResponder (EventManager)
+@interface UIResponder (BFEventManager)
 
 /**
  targetView所属的controller

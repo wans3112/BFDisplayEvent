@@ -1,5 +1,5 @@
 //
-//  BFVVMBindingContext.h
+//  NSObject+BFMVVMBinding.h
 //  BFDisplayEvent
 //
 //  Created by wans on 2018/6/27.
@@ -30,7 +30,7 @@ em_observerPathAction(MODEL, @(((void)MODEL.KEYPATH, #KEYPATH)), ACTION)
 #define EMVOObserveAction(MODEL, KEYPATH, ACTION) \
 em_observervoPathAction(MODEL, @(((void)MODEL.KEYPATH, #KEYPATH)), ACTION)
 
-@interface NSObject (BFVVMBindingContext)
+@interface NSObject (BFMVVMBinding)
 
 @property (nonatomic, copy) NSMutableDictionary *bindingManager;
 

@@ -1,17 +1,17 @@
 //
-//  BFVVMBindingContext.m
+//  NSObject+BFMVVMBinding.m
 //  BFDisplayEvent
 //
 //  Created by wans on 2018/6/27.
 //
 
-#import "BFVVMBindingContext.h"
+#import "NSObject+BFMVVMBinding.h"
 #import "objc/runtime.h"
 #import "objc/message.h"
 
 static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
 
-@implementation NSObject (BFVVMBindingContext)
+@implementation NSObject (BFMVVMBinding)
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wstrict-prototypes"

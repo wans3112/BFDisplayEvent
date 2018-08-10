@@ -6,10 +6,10 @@
 //  Copyright (c) 2017 wans. All rights reserved.
 //
 
-#import "BFDisplayEventAppDelegate.h"
+#import "AppDelegate.h"
 #import "MasterViewController.h"
 
-@implementation BFDisplayEventAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

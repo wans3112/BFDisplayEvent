@@ -12,8 +12,9 @@
 #import <BFDisplayEvent/BFDisplayEventProtocol.h>
 #import <BFDisplayEvent/BFEventManager.h>
 #import <BFDisplayEvent/BFEventModel.h>
-#import <BFDisplayEvent/UIResponder+EventManager.h>
+#import <BFDisplayEvent/UIResponder+BFEventManager.h>
 #import <BFDisplayEvent/BFViewObject.h>
-#import <BFDisplayEvent/BFVVMBindingContext.h>
+#import <BFDisplayEvent/NSObject+BFMVVMBinding.h>
+#import <BFDisplayEvent/UITableView+BFHelpper.h>
 
 #endif /* BFDisplayEvent_h */

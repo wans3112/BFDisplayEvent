@@ -10,11 +10,7 @@
 
 @protocol BFCell2Protocol <NSObject>
 
-@property (nonatomic, weak, readonly) id                                   model;
-
 @property (nonatomic,strong) NSString *name;
-
-@property (nonatomic,strong) NSString *title;
 
 @end
 

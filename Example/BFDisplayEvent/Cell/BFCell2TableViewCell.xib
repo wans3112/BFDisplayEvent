@@ -27,9 +27,6 @@
                             <constraint firstAttribute="height" constant="41" id="ueU-gI-4vz"/>
                         </constraints>
                         <state key="normal" title="点击我"/>
-                        <connections>
-                            <action selector="buttonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FT2-gW-fPk"/>
-                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMv-zJ-kYa">
                         <rect key="frame" x="262" y="37" width="42" height="21"/>

@@ -7,8 +7,6 @@
 //
 
 #import "BFCell1TableViewCell.h"
-#import "UIResponder+EventManager.h"
-#import <BFDisplayEvent/BFDisplayEvent.h>
 
 @interface BFCell1TableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *label;

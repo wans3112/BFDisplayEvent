@@ -9,8 +9,6 @@
 #import "MasterViewController.h"
 #import "BFModel.h"
 #import "BFModel2.h"
-#import <BFDisplayEvent/BFDisplayEvent.h>
-#import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
 #import "BFMode2ViewObject.h"
 #import "BFMode1ViewObject.h"
 
@@ -22,9 +20,37 @@
 
 @implementation MasterViewController
 
+#pragma mark - Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createUI];
+    [self createDataSource];
+}
+
+/**
+ *  构建视图
+ */
+- (void)createUI {
     
+    // 注册cell
+    [self.tableView em_registerNib:[UINib nibWithNibName:@"BFCell1TableViewCell" bundle:nil]
+            forCellReuseIdentifier:@"BFCell1TableViewCell"
+                       withSection:0];
+    [self.tableView em_registerNib:[UINib nibWithNibName:@"BFCell2TableViewCell" bundle:nil]
+            forCellReuseIdentifier:@"BFCell2TableViewCell"];
+    
+    self.tableView.estimatedRowHeight = 44;
+    
+    // 注册事件管理器
+    [self em_RegisterWithClassName:@"ExampleManager"];
+}
+
+/**
+ *  构建数据
+ */
+- (void)createDataSource {
+  
     self.objects = [@[] mutableCopy];
     for (int i = 0; i < 3; i++) {
         
@@ -40,7 +66,7 @@
         }else {
             
             NSMutableArray *tempArr = [@[] mutableCopy];
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 5; i++) {
                 BFModel2 *model = [[BFModel2 alloc] init];
                 model.name = [NSString stringWithFormat:@"button %lu／%d",(unsigned long)self.objects.count, i + 1];
                 
@@ -53,28 +79,7 @@
             [self.objects addObject:tempArr];
             
         }
-       
     }
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"BFCell1TableViewCell" bundle:nil] forCellReuseIdentifier:@"BFCell1TableViewCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"BFCell2TableViewCell" bundle:nil] forCellReuseIdentifier:@"BFCell2TableViewCell"];
-
-    self.tableView.estimatedRowHeight = 44;
-    
-    // 注册事件管理器
-    [self em_RegisterWithClassName:@"ExampleManager"];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
-    [super viewWillAppear:animated];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table View
@@ -83,14 +88,12 @@
     return self.objects.count;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return ((NSMutableArray *)self.objects[section]).count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell<BFDisplayProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:!indexPath.section ? @"BFCell1TableViewCell" : @"BFCell2TableViewCell"];
+    UITableViewCell<BFDisplayProtocol> *cell = [tableView em_dequeueReusableCellOnlySecionWithIndexPath:indexPath];
 
     id object = ((NSMutableArray *)self.objects[indexPath.section])[indexPath.row];
     [cell em_displayWithModel:^(BFEventModel *eventModel) {
@@ -98,27 +101,22 @@
         eventModel.indexPath = indexPath;
         eventModel.eventType = indexPath.section;//测试，区分不同section的事件是不同的(此处如果是另一个界面共用此cell，需要新建一个eventManager)
     }];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    NSString *vlue = self.em_ParamForKey(@"can");
-//    NSLog(@"%@", vlue);
     
     if ( indexPath.section == 1 ) {
         [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
             eventModel.indexPath = indexPath;
         }];
     }
-    
-//    UIViewController *vc = [[NSClassFromString(@"MasterViewController") alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
 
 }
 
 - (void)dealloc {
-    
+    NSLog(@"%@ dealloc", [self class]);
 }
 
 @end
