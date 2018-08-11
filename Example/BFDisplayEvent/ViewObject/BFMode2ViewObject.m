@@ -20,11 +20,6 @@
     return self.model;
 }
 
-//- (NSDictionary *)em_exchangeKeyFromPropertyName{
-//    
-//    return @{@"title":@"name"};
-//}
-
 - (void)dealloc {
     
 }

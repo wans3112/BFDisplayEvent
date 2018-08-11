@@ -33,4 +33,13 @@
  */
 - (void)em_setValue:(id)value forKeyPath:(NSString *)keyPath;
 
+
+/**
+ 批量将model数组包装成对应的ViewObjet数组
+
+ @param objectArray model数组
+ @return 对应ViewObjet数组
+ */
++ (NSMutableArray *)em_objectArrayWithViewObjectArray:(NSArray *)objectArray;
+
 @end

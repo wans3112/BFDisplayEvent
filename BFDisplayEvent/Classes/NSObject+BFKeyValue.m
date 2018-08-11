@@ -7,6 +7,10 @@
 //
 
 #import "NSObject+BFKeyValue.h"
+#import "BFViewObject.h"
+
+#define kKeyPathOfSep   @"."
+#define kKeyPathOfArr   @"["
 
 @implementation NSObject (BFKeyValue)
 
@@ -14,12 +18,12 @@
     
     __block id model = self;
     
-    if ( ![keyPath containsString:@"."] ) {
+    if ( ![keyPath containsString:kKeyPathOfSep] ) {
         [self targetModelWithKey:keyPath model:&model];
         return model;
     }
     
-    NSArray *tempArray = [keyPath componentsSeparatedByString:@"."];
+    NSArray *tempArray = [keyPath componentsSeparatedByString:kKeyPathOfSep];
 
     __weak typeof(self) weakSelf = self;
     [tempArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -42,12 +46,12 @@
     
     __block id model = self;
     
-    if ( ![keyPath containsString:@"."] ) {
+    if ( ![keyPath containsString:kKeyPathOfSep] ) {
         [self targetModelWithKey:keyPath model:&model];
         return;
     }
     
-    NSArray *subPaths = [keyPath componentsSeparatedByString:@"."];
+    NSArray *subPaths = [keyPath componentsSeparatedByString:kKeyPathOfSep];
     NSArray *tempArray = [subPaths subarrayWithRange:NSMakeRange(0, subPaths.count - 1)].copy;
     
     __weak typeof(self) weakSelf = self;
@@ -97,7 +101,7 @@
  */
 - (BOOL)targetModelWithKey:(NSString *)key model:(id *)model {
     
-    if ( [key hasPrefix:@"["] ) {
+    if ( [key hasPrefix:kKeyPathOfArr] ) {
         
         if ( key.length <= 1 ) return NO;
         
@@ -124,6 +128,21 @@
     }
     
     return YES;
+}
+
++ (NSMutableArray *)em_objectArrayWithViewObjectArray:(NSArray *)objectArray {
+    
+    if ( !objectArray || objectArray.count == 0 ) {
+        return nil;
+    }
+    
+    NSMutableArray *viewObjectArray = @[].mutableCopy;
+    [objectArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        BFViewObject *viewObject = [self.class em_mfv:obj];
+        [viewObjectArray addObject:viewObject];
+    }];
+    
+    return viewObjectArray;
 }
 
 @end

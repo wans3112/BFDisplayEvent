@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		038B86647E52F307E48BE50A /* Pods_BFDisplayEvent_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2F30586989214308616208 /* Pods_BFDisplayEvent_Tests.framework */; };
+		15C1912B211EB9120010075E /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C1912A211EB9120010075E /* ViewModel.m */; };
 		1784DB483DC09ADF76E149B6 /* Pods_BFDisplayEvent_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F778AEB43A62CD35519500BD /* Pods_BFDisplayEvent_Example.framework */; };
 		2B3ABB851F45990B008C3DF2 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB701F45990B008C3DF2 /* UIButton+Block.m */; };
 		2B3ABB861F45990B008C3DF2 /* BFCell1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB731F45990B008C3DF2 /* BFCell1TableViewCell.m */; };
@@ -48,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		0E8A3A11B15C640567F0AEE3 /* Pods-BFDisplayEvent_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		15C19129211EB9120010075E /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
+		15C1912A211EB9120010075E /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
 		2B3ABB6F1F45990B008C3DF2 /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
 		2B3ABB701F45990B008C3DF2 /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
 		2B3ABB721F45990B008C3DF2 /* BFCell1TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCell1TableViewCell.h; sourceTree = "<group>"; };
@@ -72,18 +75,18 @@
 		2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMode1ViewObject.m; sourceTree = "<group>"; };
 		4A2F30586989214308616208 /* Pods_BFDisplayEvent_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BFDisplayEvent_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5897701A24F65EEAD5BDFEEF /* Pods-BFDisplayEvent_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example.release.xcconfig"; sourceTree = "<group>"; };
-		6003F58A195388D20070C39A /* BFDisplayEvent_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFDisplayEvent_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F58A195388D20070C39A /* WBDisplayEvent_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBDisplayEvent_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6003F591195388D20070C39A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6003F595195388D20070C39A /* BFDisplayEvent-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFDisplayEvent-Info.plist"; sourceTree = "<group>"; };
+		6003F595195388D20070C39A /* WBDisplayEvent-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WBDisplayEvent-Info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6003F59B195388D20070C39A /* BFDisplayEvent-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFDisplayEvent-Prefix.pch"; sourceTree = "<group>"; };
+		6003F59B195388D20070C39A /* WBDisplayEvent-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WBDisplayEvent-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6003F5AE195388D20070C39A /* BFDisplayEvent_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFDisplayEvent_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6003F5AE195388D20070C39A /* WBDisplayEvent_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WBDisplayEvent_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -91,7 +94,7 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		61EA0B0A3B26553BACE5C58E /* Pods-BFDisplayEvent_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9D2862816B0A25B0F861DB49 /* BFDisplayEvent.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BFDisplayEvent.podspec; path = ../BFDisplayEvent.podspec; sourceTree = "<group>"; };
+		9D2862816B0A25B0F861DB49 /* BFDisplayEvent.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BFDisplayEvent.podspec; path = ../BFDisplayEvent.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EB69815A11B9FFC89F7E426C /* Pods-BFDisplayEvent_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F408676C587274CA900A340B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F778AEB43A62CD35519500BD /* Pods_BFDisplayEvent_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BFDisplayEvent_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15C19128211EB8F80010075E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15C19129211EB9120010075E /* ViewModel.h */,
+				15C1912A211EB9120010075E /* ViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2B3ABB6E1F45990B008C3DF2 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,7 +189,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2B802EF120F83C8E00E5AED4 /* ViewModel */ = {
+		2B802EF120F83C8E00E5AED4 /* ViewObject */ = {
 			isa = PBXGroup;
 			children = (
 				2B802EF920F8425800E5AED4 /* BFMode2ViewObject.h */,
@@ -185,7 +197,7 @@
 				2B802EFC20F8482000E5AED4 /* BFMode1ViewObject.h */,
 				2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */,
 			);
-			path = ViewModel;
+			path = ViewObject;
 			sourceTree = "<group>";
 		};
 		6003F581195388D10070C39A = {
@@ -203,8 +215,8 @@
 		6003F58B195388D20070C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6003F58A195388D20070C39A /* BFDisplayEvent_Example.app */,
-				6003F5AE195388D20070C39A /* BFDisplayEvent_Tests.xctest */,
+				6003F58A195388D20070C39A /* WBDisplayEvent_Example.app */,
+				6003F5AE195388D20070C39A /* WBDisplayEvent_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,7 +237,8 @@
 		6003F593195388D20070C39A /* Example for BFDisplayEvent */ = {
 			isa = PBXGroup;
 			children = (
-				2B802EF120F83C8E00E5AED4 /* ViewModel */,
+				15C19128211EB8F80010075E /* ViewModel */,
+				2B802EF120F83C8E00E5AED4 /* ViewObject */,
 				2B3ABB6E1F45990B008C3DF2 /* Category */,
 				2B3ABB711F45990B008C3DF2 /* Cell */,
 				2B3ABB781F45990B008C3DF2 /* Controller */,
@@ -244,10 +257,10 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6003F595195388D20070C39A /* BFDisplayEvent-Info.plist */,
+				6003F595195388D20070C39A /* WBDisplayEvent-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
-				6003F59B195388D20070C39A /* BFDisplayEvent-Prefix.pch */,
+				6003F59B195388D20070C39A /* WBDisplayEvent-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -295,9 +308,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6003F589195388D20070C39A /* BFDisplayEvent_Example */ = {
+		6003F589195388D20070C39A /* WBDisplayEvent_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "BFDisplayEvent_Example" */;
+			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "WBDisplayEvent_Example" */;
 			buildPhases = (
 				B2B04B2F18D73A6E9A680A91 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
@@ -309,14 +322,14 @@
 			);
 			dependencies = (
 			);
-			name = BFDisplayEvent_Example;
+			name = WBDisplayEvent_Example;
 			productName = BFDisplayEvent;
-			productReference = 6003F58A195388D20070C39A /* BFDisplayEvent_Example.app */;
+			productReference = 6003F58A195388D20070C39A /* WBDisplayEvent_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6003F5AD195388D20070C39A /* BFDisplayEvent_Tests */ = {
+		6003F5AD195388D20070C39A /* WBDisplayEvent_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BFDisplayEvent_Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "WBDisplayEvent_Tests" */;
 			buildPhases = (
 				A61CF836F8DEFE4BF3F39D31 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
@@ -328,9 +341,9 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = BFDisplayEvent_Tests;
+			name = WBDisplayEvent_Tests;
 			productName = BFDisplayEventTests;
-			productReference = 6003F5AE195388D20070C39A /* BFDisplayEvent_Tests.xctest */;
+			productReference = 6003F5AE195388D20070C39A /* WBDisplayEvent_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -348,7 +361,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "BFDisplayEvent" */;
+			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "WBDisplayEvent" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -361,8 +374,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F589195388D20070C39A /* BFDisplayEvent_Example */,
-				6003F5AD195388D20070C39A /* BFDisplayEvent_Tests */,
+				6003F589195388D20070C39A /* WBDisplayEvent_Example */,
+				6003F5AD195388D20070C39A /* WBDisplayEvent_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -459,6 +472,7 @@
 				2B3ABB8D1F45990B008C3DF2 /* BFModel.m in Sources */,
 				2B3ABB851F45990B008C3DF2 /* UIButton+Block.m in Sources */,
 				2B802EFB20F8425800E5AED4 /* BFMode2ViewObject.m in Sources */,
+				15C1912B211EB9120010075E /* ViewModel.m in Sources */,
 				2B3ABB8C1F45990B008C3DF2 /* ExampleManager.m in Sources */,
 				2B3ABB8B1F45990B008C3DF2 /* MasterViewController.m in Sources */,
 				2B3ABB881F45990B008C3DF2 /* BFCell2TableViewCell.m in Sources */,
@@ -482,7 +496,7 @@
 /* Begin PBXTargetDependency section */
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6003F589195388D20070C39A /* BFDisplayEvent_Example */;
+			target = 6003F589195388D20070C39A /* WBDisplayEvent_Example */;
 			targetProxy = 6003F5B3195388D20070C39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -620,8 +634,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BFDisplayEvent/BFDisplayEvent-Prefix.pch";
-				INFOPLIST_FILE = "BFDisplayEvent/BFDisplayEvent-Info.plist";
+				GCC_PREFIX_HEADER = "BFDisplayEvent/WBDisplayEvent-Prefix.pch";
+				INFOPLIST_FILE = "BFDisplayEvent/WBDisplayEvent-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -635,8 +649,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BFDisplayEvent/BFDisplayEvent-Prefix.pch";
-				INFOPLIST_FILE = "BFDisplayEvent/BFDisplayEvent-Info.plist";
+				GCC_PREFIX_HEADER = "BFDisplayEvent/WBDisplayEvent-Prefix.pch";
+				INFOPLIST_FILE = "BFDisplayEvent/WBDisplayEvent-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -663,7 +677,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BFDisplayEvent_Example.app/BFDisplayEvent_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WBDisplayEvent_Example.app/WBDisplayEvent_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -683,7 +697,7 @@
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BFDisplayEvent_Example.app/BFDisplayEvent_Example";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WBDisplayEvent_Example.app/WBDisplayEvent_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -691,7 +705,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6003F585195388D10070C39A /* Build configuration list for PBXProject "BFDisplayEvent" */ = {
+		6003F585195388D10070C39A /* Build configuration list for PBXProject "WBDisplayEvent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5BD195388D20070C39A /* Debug */,
@@ -700,7 +714,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "BFDisplayEvent_Example" */ = {
+		6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "WBDisplayEvent_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
@@ -709,7 +723,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BFDisplayEvent_Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "WBDisplayEvent_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,
