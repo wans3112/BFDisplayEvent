@@ -23,7 +23,7 @@
 
 - (void)em_displayWithModel:(BFEventManagerBlock)eventBlock {
     
-    BFEventModel *theModel = self.em_Model(eventBlock);
+    BFEventModel *theModel = self.em_model(eventBlock);
     NSObject<BFCell2Protocol> *model = theModel.model;
     
     // view与model绑定
@@ -34,9 +34,14 @@
     [self.button addActionHandler:^(NSInteger tag) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
+        // 交给事件管理器触发事件
         [strongSelf.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
             eventModel.indexPath = theModel.indexPath;
         }];
+        
+        // 回调给target
+         void(^countBlock)(int) = strongSelf.em_paramForKey(@"key");
+         if(countBlock) countBlock((int)theModel.indexPath.row);
     }];
     
 }

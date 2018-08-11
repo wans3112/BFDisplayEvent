@@ -16,7 +16,7 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  通用事件调用宏，按vc做事件解耦
  */
 #define EventInvocationDefault \
-if ( [self respondsToSelector:@selector(em_CommonEvents:)]) [self em_CommonEvents:eventModel]; \
+if ( [self respondsToSelector:@selector(em_commonEvents:)]) [self em_CommonEvents:eventModel]; \
 NSString *selName = [NSString stringWithFormat:@"em_%@:", NSStringFromClass(self.em_viewController.class)]; \
 SEL vcSel = NSSelectorFromString(selName); \
 if ( [self respondsToSelector:vcSel]) { \
@@ -32,12 +32,12 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 /**
  通过kvc获取controller的属性
  */
-@property (nonatomic, copy)   BFSetValueForKeyBlock                    em_ValueForKey;
+@property (nonatomic, copy)   BFSetValueForKeyBlock                    em_targetValueForKey;
 
 /**
  快捷转换
  */
-@property (nonatomic, strong) BFEventModelBlock                        em_Model;
+@property (nonatomic, strong) BFEventModelBlock                        em_model;
 
 /**
  targetView所属的controller
@@ -47,7 +47,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 /**
  与事件管理器绑定的Target
  */
-@property (nonatomic, weak, readonly) id                               em_Target;
+@property (nonatomic, weak, readonly) id                               em_target;
 
 /**
  初始化
@@ -63,7 +63,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  @param model eventmodel
  @return block
  */
-- (BFEventManagerBlock)em_Block:(BFEventModel *)model;
+- (BFEventManagerBlock)em_block:(BFEventModel *)model;
 
 /**
  简单跳转
@@ -78,7 +78,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 
  @param eventModel 事件model
  */
-- (void)em_CommonEvents:(BFEventModel *)eventModel;
+- (void)em_commonEvents:(BFEventModel *)eventModel;
 
 /**
  通过kvc赋值
@@ -86,7 +86,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  @param value 新值
  @param key key
  */
-- (void)em_SetValue:(id)value key:(NSString *)key;
+- (void)em_setTargetValue:(id)value key:(NSString *)key;
 
 
 /**

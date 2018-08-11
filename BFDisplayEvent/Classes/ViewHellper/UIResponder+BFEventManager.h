@@ -22,17 +22,17 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 /**
  通过kvc获取controller的属性
  */
-@property (nonatomic, copy)   BFSetValueForKeyBlock      em_ValueForKey;
+@property (nonatomic, copy)   BFSetValueForKeyBlock      em_valueForKey;
 
 /**
  通过key获取controller params
  */
-@property (nonatomic, copy)   BFSetValueForKeyBlock      em_ParamForKey;
+@property (nonatomic, copy)   BFSetValueForKeyBlock      em_paramForKey;
 
 /**
  获取model
  */
-@property (nonatomic, strong) BFEventModelBlock          em_Model;
+@property (nonatomic, strong) BFEventModelBlock          em_model;
 
 /**
  获取事件管理器,默认选择最后一个
@@ -42,7 +42,7 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 /**
  事件管理器，当注册多个事件管理器时，通过key取eventManager
  */
-@property (nonatomic, strong) BFSetValueForKeyBlock      em_ForKey;
+@property (nonatomic, strong) BFSetValueForKeyBlock      em_eventManagerForKey;
 
 
 /**
@@ -51,7 +51,7 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  @param em_ClassName 事件管理器子类
  @return 事件管理器
  */
-- (BFEventManager *)em_RegisterWithClassName:(NSString *)em_ClassName;
+- (BFEventManager *)em_registerWithClassName:(NSString *)em_ClassName;
 
 /**
  通过kvc赋值
@@ -59,7 +59,7 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  @param value 新值
  @param key key
  */
-- (void)em_SetValue:(id)value key:(NSString *)key;
+- (void)em_setTargetValue:(id)value key:(NSString *)key;
 
 /**
  给target设置参数
@@ -67,6 +67,6 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
  @param value 新值
  @param key key
  */
-- (void)em_SetParamsValue:(id)value key:(NSString *)key;
+- (void)em_setTargetParams:(id)value key:(NSString *)key;
 
 @end

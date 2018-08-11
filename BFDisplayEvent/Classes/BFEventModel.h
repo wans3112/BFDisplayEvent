@@ -22,6 +22,6 @@
  */
 @property (nonatomic,assign) NSString                         *otherType;
 
-@property (nonatomic,strong) UIView                           *targetView;
+@property (nonatomic,strong) id                               target;
 
 @end

@@ -34,7 +34,7 @@
 
 - (void)em_didSelectItemWithModelBlock:(BFEventManagerBlock)eventBlock {
     
-    BFEventModel *theModel = self.em_Model(eventBlock);
+    BFEventModel *theModel = self.em_model(eventBlock);
     
     NSLog(@"master %ld pressed", theModel.indexPath.row);
 

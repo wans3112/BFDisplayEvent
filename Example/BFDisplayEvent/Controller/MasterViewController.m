@@ -10,7 +10,9 @@
 #import "ViewModel.h"
 
 @interface MasterViewController ()
-
+{
+    int count;
+}
 @property (nonatomic, strong) NSMutableArray *objects;
 
 @end
@@ -40,7 +42,14 @@
     self.tableView.estimatedRowHeight = 44;
     
     // 注册事件管理器
-    [self em_RegisterWithClassName:@"ExampleManager"];
+    [self em_registerWithClassName:@"ExampleManager"];
+    
+    __weak typeof(self) weakSelf = self;
+    [self em_setTargetParams:^(int c){
+        __strong typeof(self) strongSelf = weakSelf;
+        strongSelf->count += c;
+        self.title = @(strongSelf->count).stringValue;
+    } key:@"key"];
 }
 
 /**

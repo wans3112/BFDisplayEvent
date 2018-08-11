@@ -42,12 +42,12 @@ static const void *kem_paramsKey = &kem_paramsKey;
 
 @implementation UIResponder (BFEventManager)
 
-- (void)em_SetValue:(id)value key:(NSString *)key {
+- (void)em_setTargetValue:(id)value key:(NSString *)key {
     
     [self.em_viewController setValue:value forKey:key];
 }
 
-- (void)em_SetParamsValue:(id)value key:(NSString *)key {
+- (void)em_setTargetParams:(id)value key:(NSString *)key {
     
     NSMutableDictionary *em_params = objc_getAssociatedObject(self.em_viewController, kem_paramsKey);
     if ( !em_params ) {
@@ -57,11 +57,11 @@ static const void *kem_paramsKey = &kem_paramsKey;
     em_params[key] = value;
     
     if ( self.em_viewController ) {
-        objc_setAssociatedObject(self.em_viewController, "em_params", em_params, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self.em_viewController, kem_paramsKey, em_params, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
 }
 
-- (BFEventManager *)em_RegisterWithClassName:(NSString *)em_ClassName {
+- (BFEventManager *)em_registerWithClassName:(NSString *)em_ClassName {
     
     BFEventManager *tempEventManager = [((BFEventManager *)[NSClassFromString(em_ClassName) alloc]) initWithTarget:self];
 
@@ -81,7 +81,7 @@ static const void *kem_paramsKey = &kem_paramsKey;
 - (BFEventManager *)eventManager {
     
     BFEventManager *tempEventManager = objc_getAssociatedObject(self.em_viewController, kEventManagerKey);
-    NSAssert(tempEventManager, @"请先通过'registerEventManagerClassName' 注册事件管理器！！");
+    NSAssert(tempEventManager, @"请先通过'em_registerWithClassName' 注册事件管理器！！");
     
     return tempEventManager;
 }
@@ -111,9 +111,9 @@ static const void *kem_paramsKey = &kem_paramsKey;
     return instance;
 }
 
-- (void)setEm_ValueForKey:(BFSetValueForKeyBlock)em_ValueForKey {}
+- (void)setEm_valueForKey:(BFSetValueForKeyBlock)em_ValueForKey {}
 
-- (BFSetValueForKeyBlock)em_ValueForKey {
+- (BFSetValueForKeyBlock)em_valueForKey {
     
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
@@ -125,9 +125,9 @@ static const void *kem_paramsKey = &kem_paramsKey;
     return icp_block;
 }
 
-- (void)setEm_ParamForKey:(BFSetValueForKeyBlock)em_ParamForKey {}
+- (void)setEm_paramForKey:(BFSetValueForKeyBlock)em_ParamForKey {}
 
-- (BFSetValueForKeyBlock)em_ParamForKey {
+- (BFSetValueForKeyBlock)em_paramForKey {
     
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
@@ -139,9 +139,9 @@ static const void *kem_paramsKey = &kem_paramsKey;
     return icp_block;
 }
 
-- (void)setEm_Model:(BFEventModelBlock)em_Model {}
+- (void)setEm_model:(BFEventModelBlock)em_Model {}
 
-- (BFEventModelBlock)em_Model {
+- (BFEventModelBlock)em_model {
     
     __weak typeof(self) weakSelf = self;
     BFEventModel* (^eventModel_block)(BFEventManagerBlock block) = ^BFEventModel* (BFEventManagerBlock block) {
@@ -154,9 +154,9 @@ static const void *kem_paramsKey = &kem_paramsKey;
     
 }
 
-- (void)setEm_ForKey:(BFSetValueForKeyBlock)em_ForKey {}
+- (void)setEm_eventManagerForKey:(BFSetValueForKeyBlock)em_ForKey {}
 
-- (BFSetValueForKeyBlock)em_ForKey {
+- (BFSetValueForKeyBlock)em_eventManagerForKey {
     
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {

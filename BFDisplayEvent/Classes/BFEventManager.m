@@ -11,7 +11,7 @@
 
 @interface BFEventManager ()
 
-@property (nonatomic, weak, readwrite) id                                   em_Target;
+@property (nonatomic, weak, readwrite) id                                   em_target;
 
 @end
 
@@ -30,7 +30,7 @@
 
     self = [super init];
     if ( self ) {
-        self.em_Target = target;
+        self.em_target = target;
     }
     return self;
 }
@@ -50,21 +50,21 @@
     return instance;
 }
 
-- (void)em_SetValue:(id)value key:(NSString *)key {
+- (void)em_setTargetValue:(id)value key:(NSString *)key {
     
     [self.em_viewController setValue:value forKey:key];
 }
 
 #pragma mark - Getter&&Setter
 
-- (BFEventManagerBlock)em_Block:(BFEventModel *)theModel {
+- (BFEventManagerBlock)em_bloc:(BFEventModel *)theModel {
 
     return  ^(BFEventModel *model) {
         model = theModel;
     };;
 }
 
-- (BFEventModelBlock)em_Model {
+- (BFEventModelBlock)em_model {
 
     __weak typeof(self) weakSelf = self;
     BFEventModel* (^eventModel_block)(BFEventManagerBlock block) = ^BFEventModel* (BFEventManagerBlock block) {
@@ -79,11 +79,11 @@
 
 - (UIViewController *)em_viewController {
     
-    if ([self.em_Target isKindOfClass:[UIViewController class]]) {
-        return (UIViewController *)self.em_Target;
+    if ([self.em_target isKindOfClass:[UIViewController class]]) {
+        return (UIViewController *)self.em_target;
     }
     
-    UIView *selfView = (UIView *)self.em_Target;
+    UIView *selfView = (UIView *)self.em_target;
     for (UIView *view = selfView; view; view = view.superview) {
         UIResponder *nextResponder = [view nextResponder];
         if ([nextResponder isKindOfClass:[UIViewController class]]) {
@@ -93,9 +93,9 @@
     return nil;
 }
 
-- (void)setEm_ValueForKey:(BFSetValueForKeyBlock)em_ValueForKey {}
+- (void)setEm_targetValueForKey:(BFSetValueForKeyBlock)em_ValueForKey {}
 
-- (BFSetValueForKeyBlock)em_ValueForKey {
+- (BFSetValueForKeyBlock)em_targetValueForKey {
     
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
@@ -134,7 +134,7 @@
                 if ( [argument isEqualToString:@"self"] ) {
                     argument = self.em_viewController;
                 }else {
-                    argument = self.em_ValueForKey(argument);
+                    argument = self.em_targetValueForKey(argument);
                 }
                 [invocation setArgument:&argument atIndex:1 + i];
             }

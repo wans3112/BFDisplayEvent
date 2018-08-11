@@ -27,7 +27,7 @@
 
 - (void)em_displayWithModel:(BFEventManagerBlock)eventBlock {
 
-    BFEventModel *theModel = self.em_Model(eventBlock);
+    BFEventModel *theModel = self.em_model(eventBlock);
 
     NSObject<BFCell1Protocol> *model = theModel.model;
     self.label.text = model.title;
@@ -38,7 +38,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self em_SetParamsValue:@"wans" key:@"can"];
+    [self em_setTargetParams:@"wans" key:@"can"];
 }
 
 @end
