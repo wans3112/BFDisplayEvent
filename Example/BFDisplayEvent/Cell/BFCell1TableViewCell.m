@@ -8,7 +8,7 @@
 
 #import "BFCell1TableViewCell.h"
 
-@interface BFCell1TableViewCell ()
+@interface BFCell1TableViewCell ()<BFDisplayProtocol>
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
@@ -19,26 +19,16 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)em_displayWithModel:(BFEventManagerBlock)eventBlock {
 
-    BFEventModel *theModel = self.em_model(eventBlock);
+    id<BFCell1Protocol> model = self.em_model(eventBlock).model;
 
-    NSObject<BFCell1Protocol> *model = theModel.model;
-    self.label.text = model.title;
-    
-//    [model bindingWithPath:@"model.name"];
-    
+    // view与model绑定
+    EMVOObserve(model, title, self, label.text);
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self em_setTargetParams:@"wans" key:@"can"];
 }
 
 @end

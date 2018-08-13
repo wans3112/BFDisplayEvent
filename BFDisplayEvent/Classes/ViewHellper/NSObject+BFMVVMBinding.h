@@ -7,28 +7,26 @@
 
 #import <Foundation/Foundation.h>
 
-#define keyPath(objc, keyPath) @(((void)objc.keyPath, #keyPath))
-
 /**
  添加绑定监听
 
  @param MODEL 监听数据源
- @param KEYPATH 需要监听的数据源字段
+ @param MODELPATH 需要监听的数据源字段
  @param TARGET 需要更新的对象
  @param TARGETPATH 需要更新对象字段
  @return 无
  */
-#define EMVOObserve(MODEL, KEYPATH, TARGET, TARGETPATH) \
-em_observervoPath(MODEL, @(((void)MODEL.KEYPATH, #KEYPATH)), TARGET, @(((void)TARGET.TARGETPATH, #TARGETPATH)))
+#define EMVOObserve(MODEL, MODELPATH, TARGET, TARGETPATH) \
+em_observervoPath(MODEL, @(((void)MODEL.MODELPATH, #MODELPATH)), TARGET, @(((void)TARGET.TARGETPATH, #TARGETPATH)))
 
-#define EMObserve(MODEL, KEYPATH, TARGET, TARGETPATH) \
-em_observerPath(MODEL, @(((void)MODEL.KEYPATH, #KEYPATH)), TARGET, @(((void)TARGET.TARGETPATH, #TARGETPATH)))
+#define EMObserve(MODEL, MODELPATH, TARGET, TARGETPATH) \
+em_observerPath(MODEL, @(((void)MODEL.MODELPATH, #MODELPATH)), TARGET, @(((void)TARGET.TARGETPATH, #TARGETPATH)))
 
-#define EMObserveAction(MODEL, KEYPATH, ACTION) \
-em_observerPathAction(MODEL, @(((void)MODEL.KEYPATH, #KEYPATH)), ACTION)
+#define EMObserveAction(MODEL, MODELPATH, ACTION) \
+em_observerPathAction(MODEL, @(((void)MODEL.MODELPATH, #MODELPATH)), ACTION)
 
-#define EMVOObserveAction(MODEL, KEYPATH, ACTION) \
-em_observervoPathAction(MODEL, @(((void)MODEL.KEYPATH, #KEYPATH)), ACTION)
+#define EMVOObserveAction(MODEL, MODELPATH, ACTION) \
+em_observervoPathAction(MODEL, @(((void)MODEL.MODELPATH, #MODELPATH)), ACTION)
 
 @interface NSObject (BFMVVMBinding)
 

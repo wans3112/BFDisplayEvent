@@ -8,7 +8,8 @@
 
 #import "BFCell2TableViewCell.h"
 
-@interface BFCell2TableViewCell ()
+
+@interface BFCell2TableViewCell ()<BFDisplayProtocol>
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 

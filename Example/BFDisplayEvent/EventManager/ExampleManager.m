@@ -42,14 +42,11 @@
     [self em_handleUpdateTargetWithKeys:@[@"self",@"objects"] eventBlock:^(MasterViewController *vc, NSMutableArray<NSMutableArray *> *objects){
         
         NSMutableArray *temp = objects[indexPath.section];
-        
         BFModel2 *model = temp[indexPath.row];
         model.name = @"wans";
-//        [temp replaceObjectAtIndex:indexPath.row withObject:model];
-//        [objects replaceObjectAtIndex:indexPath.section withObject:temp];
         
-//        [vc.tableView reloadData];
-//        NSLog(@"vc:%@\nobject:%@",vc, objects);
+//        NSString *path = [NSString stringWithFormat:@"objects.[%ld.[%ld.model.name", indexPath.section, indexPath.row];
+//        id objc =  [self.em_viewController em_valueForKeyPath:@"objects.[1.[1"];
     }];
 }
 

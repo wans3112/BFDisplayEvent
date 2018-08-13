@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BFDisplayEventProtocol.h"
 
 @protocol BFCell1Protocol <NSObject>
 
@@ -15,7 +14,6 @@
 
 @end
 
-
-@interface BFCell1TableViewCell : UITableViewCell<BFDisplayProtocol>
+@interface BFCell1TableViewCell : UITableViewCell
 
 @end

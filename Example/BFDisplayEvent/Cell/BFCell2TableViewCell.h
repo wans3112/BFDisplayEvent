@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @protocol BFCell2Protocol <NSObject>
-
 @property (nonatomic,strong) NSString *name;
 
 @end
