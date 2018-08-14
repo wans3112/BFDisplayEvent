@@ -36,7 +36,7 @@
     }];
     
     if ( !model ) {
-        NSLog(@"keypath:%@ 不合法", keyPath);
+        NSLog(@"keypath:%@ invalid", keyPath);
     }
     
     return model;
@@ -64,7 +64,7 @@
     }];
     
     if ( !model ) {
-        NSLog(@"keypath:%@ 不合法", keyPath);
+        NSLog(@"keypath:%@ invalid", keyPath);
         return;
     }
     

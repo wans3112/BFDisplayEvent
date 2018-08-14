@@ -6,6 +6,7 @@
 //  Copyright © 2017年 wans,www.wans3112.cn All rights reserved.
 //
 
+
 #import "BFEventModel.h"
 
 @implementation BFEventModel

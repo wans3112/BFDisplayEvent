@@ -1,8 +1,9 @@
 //
 //  BFViewObject.h
-//  BFDisplayEvent
+//  HomePage https://github.com/wans3112/BFDisplayEvent
 //
 //  Created by wans on 2018/7/13.
+//  Copyright © 2017年 wans,www.wans3112.cn All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -41,18 +41,15 @@
     NSIndexPath *indexPath = theModel.indexPath;
     [self em_handleUpdateTargetWithKeysAndValues:@[@"objects"] eventBlock:^(NSMutableArray<NSMutableArray *> *objects){
         
-        BFModel2 *model = objects[indexPath.section][indexPath.row];
-        model.name = @"wans";
+        void(^countBlock)(int) = self.em_targetParamForKey(@"key");
+        if(countBlock) countBlock((int)indexPath.row);
         
-        UIViewController *vc2 = [[NSClassFromString(@"MasterViewController") alloc] init];
-        [self.em_viewController.navigationController pushViewController:vc2 animated:YES];
-        
-        
-        /** 通过扩展的kvc赋值
-         NSString *path = [NSString stringWithFormat:@"objects.[%ld.[%ld.model.name", indexPath.section, indexPath.row];
-         id objc =  [self.em_viewController em_valueForKeyPath:@"objects.[1.[1"];
-         **/
     }];
+    
+    /** 通过扩展的kvc赋值
+     NSString *path = [NSString stringWithFormat:@"objects.[%ld.[%ld.model.name", indexPath.section, indexPath.row];
+     id objc =  [self.em_viewController em_valueForKeyPath:@"objects.[1.[1"];
+     **/
 }
 
 - (void)em_didSelectItemWithEventType:(NSInteger)eventType {
@@ -62,6 +59,7 @@
         {
             NSLog(@"master 3 pressed");
             
+            // 回调给target,这里的target就是vc
             
         }
             
