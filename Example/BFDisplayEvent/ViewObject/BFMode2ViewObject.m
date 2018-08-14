@@ -15,6 +15,11 @@
     return [NSString stringWithFormat:@"自定义：%@", self.model2.name];
 }
 
+- (NSString *)title {
+    
+    return @"超级按钮";
+}
+
 - (BFModel2 *)model2 {
     
     return self.model;

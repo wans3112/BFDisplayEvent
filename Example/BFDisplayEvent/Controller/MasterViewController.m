@@ -48,7 +48,7 @@
     [self em_setTargetParams:^(int c){
         __strong typeof(self) strongSelf = weakSelf;
         strongSelf->count += c;
-        self.title = @(strongSelf->count).stringValue;
+        strongSelf.title = @(strongSelf->count).stringValue;
     } key:@"key"];
 }
 
@@ -75,19 +75,17 @@
     id object = ((NSMutableArray *)self.objects[indexPath.section])[indexPath.row];
     [cell em_displayWithModel:^(BFEventModel *eventModel) {
         eventModel.model = object;
-        eventModel.indexPath = indexPath;
     }];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ( indexPath.section == 1 ) {
-        [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
-            eventModel.indexPath = indexPath;
-        }];
-    }
+    [self.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+        eventModel.indexPath = indexPath;
+    }];
 
 }
 

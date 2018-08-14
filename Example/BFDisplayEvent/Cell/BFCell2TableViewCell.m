@@ -24,25 +24,33 @@
 
 - (void)em_displayWithModel:(BFEventManagerBlock)eventBlock {
     
-    BFEventModel *theModel = self.em_model(eventBlock);
-    NSObject<BFCell2Protocol> *model = theModel.model;
-    
+    NSObject<BFCell2Protocol> *model = self.em_model(eventBlock).model;
+
+    __weak typeof(self) weakSelf = self;
+
     // view与model绑定
     EMVOObserve(model, name, self.label, text);
+    EMVOObserveAction(model, title, ^(NSString *titleValue){
+        [self.button setTitle:titleValue forState:UIControlStateNormal];
+    });
 
     // btn事件处理
-    __weak typeof(self) weakSelf = self;
     [self.button addActionHandler:^(NSInteger tag) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
-        // 交给事件管理器触发事件
-        [strongSelf.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
-            eventModel.indexPath = theModel.indexPath;
-        }];
+        // 回调给target,这里的target就是vc
+        void(^countBlock)(int) = strongSelf.em_paramForKey(@"key");
+        if(countBlock) countBlock((int)strongSelf.em_indexPath.row);
         
-        // 回调给target
-         void(^countBlock)(int) = strongSelf.em_paramForKey(@"key");
-         if(countBlock) countBlock((int)theModel.indexPath.row);
+        
+         // 也可以交给事件管理器触发事件
+         /**
+          [strongSelf.eventManager  em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+              eventModel.indexPath = self.indexPath;
+              eventModel.identifier = @"from BFCell2TableViewCell";
+          }];
+          **/
+         
     }];
     
 }

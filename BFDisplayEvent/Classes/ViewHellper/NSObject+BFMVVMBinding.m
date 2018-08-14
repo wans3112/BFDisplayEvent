@@ -15,7 +15,7 @@ static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wstrict-prototypes"
-- (void)em_observerPath:(NSString *)observerPath targetAction:(void(^)())targetAction {
+- (void)em_observerPath:(NSString *)observerPath targetAction:(BFMVVMViewAction)targetAction {
 #pragma clang diagnostic pop
 
     if ( !observerPath ) return;
@@ -92,16 +92,16 @@ void em_observervoPath(id model, NSString *observerPath, id target, NSString *ta
     [self em_observerPath:observerPath2 target:target targetPath:targetPath];
 }
 
-void em_observerPathAction(id model, NSString *observerPath, id targetAction) {
+void em_observerPathAction(id model, NSString *observerPath, BFMVVMViewAction targetAction) {
     
-    ((void (*)(id, SEL, NSString *, id))objc_msgSend)(model, @selector(em_observerPath:targetAction:), observerPath, targetAction);
+    ((void (*)(id, SEL, NSString *, BFMVVMViewAction))objc_msgSend)(model, @selector(em_observerPath:targetAction:), observerPath, targetAction);
 }
 
-void em_observervoPathAction(id model, NSString *observerPath, id targetAction) {
+void em_observervoPathAction(id model, NSString *observerPath, BFMVVMViewAction targetAction) {
     
     NSString *observerPath2 = [@"model." stringByAppendingString:observerPath];
     
-    ((void (*)(id, SEL, NSString *, id))objc_msgSend)(model, @selector(em_observerPath:targetAction:), observerPath2, targetAction);
+    ((void (*)(id, SEL, NSString *, BFMVVMViewAction))objc_msgSend)(model, @selector(em_observerPath:targetAction:), observerPath2, targetAction);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -129,23 +129,29 @@ void em_observervoPathAction(id model, NSString *observerPath, id targetAction) 
 #pragma mark - Swizzle
 
 + (void)load {
-    Method method1 = class_getInstanceMethod([self class], NSSelectorFromString(@"dealloc"));
-    Method method2 = class_getInstanceMethod([self class], @selector(deallocSwizzle));
-    method_exchangeImplementations(method1, method2);
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Method method1 = class_getInstanceMethod([self class], NSSelectorFromString(@"dealloc"));
+        Method method2 = class_getInstanceMethod([self class], @selector(deallocSwizzle));
+        method_exchangeImplementations(method1, method2);
+    });
+    
 }
 
 - (void)deallocSwizzle {
     
     // 销毁时移除所有监听
-    if ( self.bindingManager ) {
-        __weak typeof(self) weakSelf = self;
+    if ( self.bindingManager.count > 0 ) {
+        __unsafe_unretained NSObject *weakSelf = self;
         [self.bindingManager enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
+            __strong NSObject *strongSelf = weakSelf;
             
-            [strongSelf removeObserver:self forKeyPath:key context:(__bridge void *)self];
+            [strongSelf removeObserver:strongSelf forKeyPath:key context:(__bridge void *)strongSelf];
             [strongSelf.bindingManager removeObjectForKey:key];
         }];
         self.bindingManager = nil;
+        weakSelf = nil;
     }
 
     [self deallocSwizzle];

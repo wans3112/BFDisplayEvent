@@ -15,7 +15,7 @@
 #import <BFDisplayEvent/UIResponder+BFEventManager.h>
 #import <BFDisplayEvent/BFViewObject.h>
 #import <BFDisplayEvent/NSObject+BFMVVMBinding.h>
-#import <BFDisplayEvent/UITableView+BFHelpper.h>
+#import <BFDisplayEvent/UITableView+BFAddition.h>
 #import <BFDisplayEvent/NSObject+BFKeyValue.h>
 
 #endif /* BFDisplayEvent_h */

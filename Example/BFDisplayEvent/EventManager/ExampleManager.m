@@ -39,14 +39,19 @@
     NSLog(@"master %ld pressed", theModel.indexPath.row);
 
     NSIndexPath *indexPath = theModel.indexPath;
-    [self em_handleUpdateTargetWithKeys:@[@"self",@"objects"] eventBlock:^(MasterViewController *vc, NSMutableArray<NSMutableArray *> *objects){
+    [self em_handleUpdateTargetWithKeysAndValues:@[@"objects"] eventBlock:^(NSMutableArray<NSMutableArray *> *objects){
         
-        NSMutableArray *temp = objects[indexPath.section];
-        BFModel2 *model = temp[indexPath.row];
+        BFModel2 *model = objects[indexPath.section][indexPath.row];
         model.name = @"wans";
         
-//        NSString *path = [NSString stringWithFormat:@"objects.[%ld.[%ld.model.name", indexPath.section, indexPath.row];
-//        id objc =  [self.em_viewController em_valueForKeyPath:@"objects.[1.[1"];
+        UIViewController *vc2 = [[NSClassFromString(@"MasterViewController") alloc] init];
+        [self.em_viewController.navigationController pushViewController:vc2 animated:YES];
+        
+        
+        /** 通过扩展的kvc赋值
+         NSString *path = [NSString stringWithFormat:@"objects.[%ld.[%ld.model.name", indexPath.section, indexPath.row];
+         id objc =  [self.em_viewController em_valueForKeyPath:@"objects.[1.[1"];
+         **/
     }];
 }
 

@@ -1,17 +1,31 @@
 //
-//  UITableView+BFHelpper.m
+//  UITableView+BFAddition.m
 //  BFDisplayEvent
 //
 //  Created by wans on 2018/8/10.
 //
 
-#import "UITableView+BFHelpper.h"
+#import "UITableView+BFAddition.h"
 #import "objc/runtime.h"
 
 static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
+static void *kPropertyBindingIndexPathKey = &kPropertyBindingIndexPathKey;
+
 static NSString *kCommonIdentifierKey   = @"CommonIdentifierKey";
 
-@implementation UITableView (BFHelpper)
+@implementation UITableViewCell (BFAddition)
+
+- (void)setEm_indexPath:(NSIndexPath *)indexPath {
+    objc_setAssociatedObject(self, kPropertyBindingIndexPathKey, indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSIndexPath *)em_indexPath {
+    return objc_getAssociatedObject(self, kPropertyBindingIndexPathKey);
+}
+
+@end
+
+@implementation UITableView (BFAddition)
 
 - (void)updateIdentifierManager:(NSString *)identifier identifierKey:(NSString *)identifierKey {
     
@@ -107,7 +121,10 @@ static NSString *kCommonIdentifierKey   = @"CommonIdentifierKey";
         identifier = self.identifierManager[kCommonIdentifierKey];
     }
     
-    return [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    cell.em_indexPath = indexPath;
+    
+    return cell;
 }
 
 - (__kindof UITableViewCell *)em_dequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath {
@@ -118,7 +135,10 @@ static NSString *kCommonIdentifierKey   = @"CommonIdentifierKey";
         identifier = self.identifierManager[kCommonIdentifierKey];
     }
     
-    return [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    cell.em_indexPath = indexPath;
+    
+    return cell;
 }
 
 #pragma mark - Getter&&Setter

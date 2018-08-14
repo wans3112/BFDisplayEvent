@@ -96,10 +96,10 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  @param eventBlock 回调，用于操作更新
  * target
  * @property (nonatomic, strong) NSMutableArray *objects;
- * [self em_handleUpdateTargetWithKeys:@[@"self",@"objects"] eventBlock:^(id target, NSArray *object){
+ * [self em_handleUpdateTargetWithKeysAndValues:@[@"self",@"objects"] eventBlock:^(id target, NSArray *object){
      //TODO: UPDATE
    }];
  */
-- (void)em_handleUpdateTargetWithKeys:(NSArray *)keys eventBlock:(id)eventBlock;
+- (void)em_handleUpdateTargetWithKeysAndValues:(NSArray *)keys eventBlock:(id)eventBlock;
 
 @end

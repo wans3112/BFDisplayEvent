@@ -18,24 +18,24 @@ static const void *kem_paramsKey = &kem_paramsKey;
 /**
  所有的事件管理器
  */
-@property (nonatomic, strong) NSMutableDictionary<NSString *, BFEventManager*>      *em_eventManagers;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, BFEventManager*>      *eventManagers;
 
 @end
 
 @implementation UIResponder (BFEventManagers)
 
-- (void)setEm_eventManagers:(NSMutableDictionary<NSString *,BFEventManager *> *)em_eventManagers {
+- (void)setEventManagers:(NSMutableDictionary<NSString *,BFEventManager *> *)em_eventManagers {
     objc_setAssociatedObject(self.em_viewController, kem_eventManagersKey, em_eventManagers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSMutableDictionary<NSString *, BFEventManager*> *)em_eventManagers {
-    NSMutableDictionary *em_eventManagers = objc_getAssociatedObject(self.em_viewController, kem_eventManagersKey);
-    if ( !em_eventManagers ) {
-        em_eventManagers = @{}.mutableCopy;
+- (NSMutableDictionary<NSString *, BFEventManager*> *)eventManagers {
+    NSMutableDictionary *tempManagers = objc_getAssociatedObject(self.em_viewController, kem_eventManagersKey);
+    if ( !tempManagers ) {
+        tempManagers = @{}.mutableCopy;
         
-        self.em_eventManagers = em_eventManagers;
+        self.eventManagers = tempManagers;
     }
-    return em_eventManagers;
+    return tempManagers;
 }
 
 @end
@@ -61,14 +61,17 @@ static const void *kem_paramsKey = &kem_paramsKey;
     }
 }
 
-- (BFEventManager *)em_registerWithClassName:(NSString *)em_ClassName {
+- (void)em_registerWithClassName:(NSString *)em_ClassName {
     
     BFEventManager *tempEventManager = [((BFEventManager *)[NSClassFromString(em_ClassName) alloc]) initWithTarget:self];
 
     self.eventManager = tempEventManager;
-    self.em_eventManagers[em_ClassName] = tempEventManager;
+    self.eventManagers[em_ClassName] = tempEventManager;
+}
+
+- (BFEventManager *)eventManagerWithClassName:(NSString *)className {
     
-    return tempEventManager;
+    return self.eventManagers[className];
 }
 
 #pragma mark - Getter&&Setter
@@ -161,7 +164,7 @@ static const void *kem_paramsKey = &kem_paramsKey;
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
         __strong typeof(self) strongSelf = weakSelf;
-        return strongSelf.em_eventManagers[key];
+        return strongSelf.eventManagers[key];
     };
     
     return icp_block;

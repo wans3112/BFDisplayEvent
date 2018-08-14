@@ -27,6 +27,10 @@
     EMVOObserve(model, title, self, label.text);
 }
 
+- (void)dealloc {
+    NSLog(@"%@ dealloc", [self class]);
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 }

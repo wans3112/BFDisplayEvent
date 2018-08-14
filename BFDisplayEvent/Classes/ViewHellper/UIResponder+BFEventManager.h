@@ -48,10 +48,18 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 /**
  给当前target注册时事件管理器
 
- @param em_ClassName 事件管理器子类
- @return 事件管理器
+ @param className 事件管理器子类
  */
-- (BFEventManager *)em_registerWithClassName:(NSString *)em_ClassName;
+- (void)em_registerWithClassName:(NSString *)className;
+
+
+/**
+ 根据名称获取事件管理器
+
+ @param className 事件管理器名
+ @return 事件管理器对象
+ */
+- (BFEventManager *)eventManagerWithClassName:(NSString *)className;
 
 /**
  通过kvc赋值

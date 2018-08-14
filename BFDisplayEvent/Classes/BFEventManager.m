@@ -52,7 +52,7 @@
 
 - (void)em_setTargetValue:(id)value key:(NSString *)key {
     
-    [self.em_viewController setValue:value forKey:key];
+    [self.em_target setValue:value forKey:key];
 }
 
 #pragma mark - Getter&&Setter
@@ -101,13 +101,13 @@
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
         __strong typeof(self) strongSelf = weakSelf;
         
-        return [strongSelf.em_viewController valueForKey:key];
+        return [strongSelf.em_target valueForKey:key];
     };
     
     return icp_block;
 }
 
-- (void)em_handleUpdateTargetWithKeys:(NSArray *)keys eventBlock:(id)eventBlock {
+- (void)em_handleUpdateTargetWithKeysAndValues:(NSArray *)keys eventBlock:(id)eventBlock {
     
     if (eventBlock == nil) return;
     id target = [eventBlock  copy];
@@ -132,7 +132,7 @@
                 id argument = keys[i];
                 
                 if ( [argument isEqualToString:@"self"] ) {
-                    argument = self.em_viewController;
+                    argument = self.em_target;
                 }else {
                     argument = self.em_targetValueForKey(argument);
                 }
