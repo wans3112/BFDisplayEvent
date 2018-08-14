@@ -8,10 +8,11 @@
 
 #import "BFEventManager.h"
 #import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
+#import "UIResponder+BFEventManager.h"
 
 @interface BFEventManager ()
 
-@property (nonatomic, weak, readwrite) id                                   em_target;
+@property (nonatomic, weak, readwrite) UIResponder                          *em_target;
 
 @end
 
@@ -43,68 +44,35 @@
     
 }
 
-- (id)em_Setup:(id)instance block:(BFEventManagerBlock)block {
-    if (block) {
-        block(instance);
-    }
-    return instance;
-}
-
-- (void)em_setTargetValue:(id)value key:(NSString *)key {
-    
-    [self.em_target setValue:value forKey:key];
+- (void)em_didSelectItemWithIdentifier:(NSString *)identifier {
+   
+    [self em_didSelectItemWithModelBlock:^(BFEventModel *eventModel) {
+        eventModel.identifier = identifier;
+    }];
 }
 
 #pragma mark - Getter&&Setter
 
-- (BFEventManagerBlock)em_bloc:(BFEventModel *)theModel {
-
-    return  ^(BFEventModel *model) {
-        model = theModel;
-    };;
-}
-
 - (BFEventModelBlock)em_model {
-
-    __weak typeof(self) weakSelf = self;
-    BFEventModel* (^eventModel_block)(BFEventManagerBlock block) = ^BFEventModel* (BFEventManagerBlock block) {
-        __strong typeof(self) strongSelf = weakSelf;
-        
-        return [strongSelf em_Setup:[BFEventModel new] block:block];
-    };
     
-    return eventModel_block;
-    
+    return self.em_target.em_model;
 }
 
 - (UIViewController *)em_viewController {
     
-    if ([self.em_target isKindOfClass:[UIViewController class]]) {
-        return (UIViewController *)self.em_target;
-    }
-    
-    UIView *selfView = (UIView *)self.em_target;
-    for (UIView *view = selfView; view; view = view.superview) {
-        UIResponder *nextResponder = [view nextResponder];
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            return (UIViewController *)nextResponder;
-        }
-    }
-    return nil;
+    return self.em_target.em_viewController;
 }
 
 - (void)setEm_targetValueForKey:(BFSetValueForKeyBlock)em_ValueForKey {}
 
 - (BFSetValueForKeyBlock)em_targetValueForKey {
-    
-    __weak typeof(self) weakSelf = self;
-    id (^icp_block)(NSString *key) = ^id (NSString *key) {
-        __strong typeof(self) strongSelf = weakSelf;
-        
-        return [strongSelf.em_target valueForKey:key];
-    };
-    
-    return icp_block;
+    return self.em_target.em_valueForKey;
+}
+
+- (void)setEm_targetParamForKey:(BFSetValueForKeyBlock)em_targetParamForKey {}
+
+- (BFSetValueForKeyBlock)em_targetParamForKey {
+    return self.em_target.em_paramForKey;
 }
 
 - (void)em_handleUpdateTargetWithKeysAndValues:(NSArray *)keys eventBlock:(id)eventBlock {

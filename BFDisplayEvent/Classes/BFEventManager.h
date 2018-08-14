@@ -30,9 +30,14 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 @interface BFEventManager : NSObject<BFEventManagerProtocol>
 
 /**
- 通过kvc获取controller的属性
+ 通过kvc获取target的属性
  */
 @property (nonatomic, copy)   BFSetValueForKeyBlock                    em_targetValueForKey;
+
+/**
+ 通过kvc获取target的param
+ */
+@property (nonatomic, copy)   BFSetValueForKeyBlock                    em_targetParamForKey;
 
 /**
  快捷转换
@@ -47,7 +52,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
 /**
  与事件管理器绑定的Target
  */
-@property (nonatomic, weak, readonly) id                               em_target;
+@property (nonatomic, weak, readonly) UIResponder                      *em_target;
 
 /**
  初始化
@@ -71,6 +76,7 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  @param eventType 事件标志
  */
 - (void)em_didSelectItemWithEventType:(NSInteger)eventType;
+- (void)em_didSelectItemWithIdentifier:(NSString *)identifier;
 
 
 /**
@@ -79,14 +85,6 @@ typedef BFEventModel* (^BFEventModelBlock)(BFEventManagerBlock eventBlock);
  @param eventModel 事件model
  */
 - (void)em_commonEvents:(BFEventModel *)eventModel;
-
-/**
- 通过kvc赋值
- 
- @param value 新值
- @param key key
- */
-- (void)em_setTargetValue:(id)value key:(NSString *)key;
 
 
 /**
