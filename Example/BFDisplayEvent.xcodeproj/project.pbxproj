@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		038B86647E52F307E48BE50A /* Pods_BFDisplayEvent_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A2F30586989214308616208 /* Pods_BFDisplayEvent_Tests.framework */; };
 		15C1912B211EB9120010075E /* ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C1912A211EB9120010075E /* ViewModel.m */; };
-		1784DB483DC09ADF76E149B6 /* Pods_BFDisplayEvent_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F778AEB43A62CD35519500BD /* Pods_BFDisplayEvent_Example.framework */; };
 		2B3ABB851F45990B008C3DF2 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB701F45990B008C3DF2 /* UIButton+Block.m */; };
 		2B3ABB861F45990B008C3DF2 /* BFCell1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB731F45990B008C3DF2 /* BFCell1TableViewCell.m */; };
 		2B3ABB871F45990B008C3DF2 /* BFCell1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B3ABB741F45990B008C3DF2 /* BFCell1TableViewCell.xib */; };
@@ -22,6 +20,7 @@
 		2B3ABB8E1F45990B008C3DF2 /* BFModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ABB841F45990B008C3DF2 /* BFModel2.m */; };
 		2B802EFB20F8425800E5AED4 /* BFMode2ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B802EFA20F8425800E5AED4 /* BFMode2ViewObject.m */; };
 		2B802EFE20F8482000E5AED4 /* BFMode1ViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */; };
+		38852A926A0E61CD419A0D96 /* libPods-BFDisplayEvent_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 701604F94093322F66DFADEC /* libPods-BFDisplayEvent_Tests.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -35,6 +34,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		F1809DDD95B7353B8987A460 /* libPods-BFDisplayEvent_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C01080FC8EB3B9E1476A11 /* libPods-BFDisplayEvent_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05C01080FC8EB3B9E1476A11 /* libPods-BFDisplayEvent_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BFDisplayEvent_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8A3A11B15C640567F0AEE3 /* Pods-BFDisplayEvent_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		15C19129211EB9120010075E /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
 		15C1912A211EB9120010075E /* ViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewModel.m; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		2B802EFA20F8425800E5AED4 /* BFMode2ViewObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMode2ViewObject.m; sourceTree = "<group>"; };
 		2B802EFC20F8482000E5AED4 /* BFMode1ViewObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMode1ViewObject.h; sourceTree = "<group>"; };
 		2B802EFD20F8482000E5AED4 /* BFMode1ViewObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BFMode1ViewObject.m; sourceTree = "<group>"; };
-		4A2F30586989214308616208 /* Pods_BFDisplayEvent_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BFDisplayEvent_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5897701A24F65EEAD5BDFEEF /* Pods-BFDisplayEvent_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* BFDisplayEvent_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFDisplayEvent_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,11 +93,11 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		61EA0B0A3B26553BACE5C58E /* Pods-BFDisplayEvent_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		701604F94093322F66DFADEC /* libPods-BFDisplayEvent_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BFDisplayEvent_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D2862816B0A25B0F861DB49 /* BFDisplayEvent.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BFDisplayEvent.podspec; path = ../BFDisplayEvent.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EB69815A11B9FFC89F7E426C /* Pods-BFDisplayEvent_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BFDisplayEvent_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BFDisplayEvent_Tests/Pods-BFDisplayEvent_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F408676C587274CA900A340B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F778AEB43A62CD35519500BD /* Pods_BFDisplayEvent_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BFDisplayEvent_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9DFD2F3E0D826FA34A028B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				1784DB483DC09ADF76E149B6 /* Pods_BFDisplayEvent_Example.framework in Frameworks */,
+				F1809DDD95B7353B8987A460 /* libPods-BFDisplayEvent_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +120,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				038B86647E52F307E48BE50A /* Pods_BFDisplayEvent_Tests.framework in Frameworks */,
+				38852A926A0E61CD419A0D96 /* libPods-BFDisplayEvent_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +229,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				F778AEB43A62CD35519500BD /* Pods_BFDisplayEvent_Example.framework */,
-				4A2F30586989214308616208 /* Pods_BFDisplayEvent_Tests.framework */,
+				05C01080FC8EB3B9E1476A11 /* libPods-BFDisplayEvent_Example.a */,
+				701604F94093322F66DFADEC /* libPods-BFDisplayEvent_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -316,7 +316,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				718036450CD5E66571E14255 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,26 +403,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		718036450CD5E66571E14255 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BFDisplayEvent/BFDisplayEvent.framework",
-				"${BUILT_PRODUCTS_DIR}/CTObjectiveCRuntimeAdditions/CTObjectiveCRuntimeAdditions.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BFDisplayEvent.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTObjectiveCRuntimeAdditions.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BFDisplayEvent_Example/Pods-BFDisplayEvent_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A61CF836F8DEFE4BF3F39D31 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

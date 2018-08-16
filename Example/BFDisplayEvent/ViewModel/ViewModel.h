@@ -12,4 +12,6 @@
 
 + (NSMutableArray *)doGetDataSources;
 
++ (void)doGetDataSourcesWithCompletion:(void(^)(id))completion;
+
 @end

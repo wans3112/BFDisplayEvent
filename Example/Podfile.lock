@@ -2,22 +2,30 @@ PODS:
   - BFDisplayEvent (1.0.7):
     - CTObjectiveCRuntimeAdditions
   - CTObjectiveCRuntimeAdditions (0.0.1)
+  - Reachability (3.2)
+  - WBNetworkingLite (1.0.0):
+    - Reachability
 
 DEPENDENCIES:
   - BFDisplayEvent (from `../`)
+  - WBNetworkingLite
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CTObjectiveCRuntimeAdditions
+    - Reachability
+    - WBNetworkingLite
 
 EXTERNAL SOURCES:
   BFDisplayEvent:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BFDisplayEvent: 74eca8c163cfb0aec572360182c30959b01a9e43
+  BFDisplayEvent: 6b7ca2f165592389ba9e9d7bc43a8f9041e223c0
   CTObjectiveCRuntimeAdditions: e4164f82d489d542447a1ae35b27965b356c4738
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  WBNetworkingLite: ee19185659deeeaf2f36bc3248ec574852cec178
 
-PODFILE CHECKSUM: ab34ea20373d156ceec3e5cb1a8e9d21c970abb4
+PODFILE CHECKSUM: 33f9e033733a99c94f76a1c1f5fe97f0951369e4
 
 COCOAPODS: 1.5.3

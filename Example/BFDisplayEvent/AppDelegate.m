@@ -8,11 +8,17 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
+#import <WBNetworkingLite/LYNetWorking.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [LYNetWorking setupHttpConfig:^(LYNetWorkingConfig * _Nonnull config) {
+        config.baseUrl = @"https://api.douban.com";
+        config.defaultHeaderFields = @{@"token":@"123456", @"appVersion":@"1.0.0"};
+    }];
+    
     // 创建主窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];

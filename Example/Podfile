@@ -1,4 +1,3 @@
-use_frameworks!
 
 target 'BFDisplayEvent_Example' do
   pod 'BFDisplayEvent', :path => '../'
@@ -6,12 +5,8 @@ target 'BFDisplayEvent_Example' do
   target 'BFDisplayEvent_Tests' do
     inherit! :search_paths
 
-#    pod 'Specta'
-#  pod 'Expecta'
-#  pod 'FBSnapshotTestCase'
-#  pod 'Expecta+Snapshots'
-
 #  pod 'Aspects'
+  pod 'WBNetworkingLite'
 
   end
 end
