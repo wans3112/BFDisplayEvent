@@ -12,6 +12,7 @@
 static const void *kEventManagerKey = &kEventManagerKey;
 static const void *kem_eventManagersKey = &kem_eventManagersKey;
 static const void *kem_paramsKey = &kem_paramsKey;
+static const void *kem_eventModelKey = &kem_eventModelKey;
 
 @interface UIResponder (BFEventManagers)
 
@@ -145,21 +146,30 @@ static const void *kem_paramsKey = &kem_paramsKey;
 - (void)setEm_model:(BFEventModelBlock)em_Model {}
 
 - (BFEventModelBlock)em_model {
-    
+
     __weak typeof(self) weakSelf = self;
     BFEventModel* (^eventModel_block)(BFEventManagerBlock block) = ^BFEventModel* (BFEventManagerBlock block) {
         __strong typeof(self) strongSelf = weakSelf;
-        
-        return [strongSelf em_Setup:[BFEventModel new] block:block];
+        BFEventModel *eventModel = [strongSelf em_Setup:[BFEventModel new] block:block];
+        strongSelf.eventModel = eventModel;
+        return eventModel;
     };
     
     return eventModel_block;
     
 }
 
-- (void)setEm_eventManagerForKey:(BFSetValueForKeyBlock)em_ForKey {}
+- (void)setEventModel:(BFEventModel *)eventModel {
+    objc_setAssociatedObject(self, kem_eventModelKey, eventModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
-- (BFSetValueForKeyBlock)em_eventManagerForKey {
+- (BFEventModel *)eventModel {
+    return objc_getAssociatedObject(self, kem_eventModelKey);
+}
+
+- (void)setEm_managerForKey:(BFEventManagerForKey)em_ForKey {}
+
+- (BFEventManagerForKey)em_managerForKey {
     
     __weak typeof(self) weakSelf = self;
     id (^icp_block)(NSString *key) = ^id (NSString *key) {

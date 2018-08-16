@@ -145,7 +145,7 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		2B3ABB711F45990B008C3DF2 /* Cell */ = {
+		2B3ABB711F45990B008C3DF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				2B3ABB721F45990B008C3DF2 /* BFCell1TableViewCell.h */,
@@ -155,7 +155,7 @@
 				2B3ABB761F45990B008C3DF2 /* BFCell2TableViewCell.m */,
 				2B3ABB771F45990B008C3DF2 /* BFCell2TableViewCell.xib */,
 			);
-			path = Cell;
+			path = View;
 			sourceTree = "<group>";
 		};
 		2B3ABB781F45990B008C3DF2 /* Controller */ = {
@@ -204,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
+				2B3ABB6E1F45990B008C3DF2 /* Category */,
 				6003F593195388D20070C39A /* Example for BFDisplayEvent */,
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
@@ -239,8 +240,7 @@
 			children = (
 				15C19128211EB8F80010075E /* ViewModel */,
 				2B802EF120F83C8E00E5AED4 /* ViewObject */,
-				2B3ABB6E1F45990B008C3DF2 /* Category */,
-				2B3ABB711F45990B008C3DF2 /* Cell */,
+				2B3ABB711F45990B008C3DF2 /* View */,
 				2B3ABB781F45990B008C3DF2 /* Controller */,
 				2B3ABB7D1F45990B008C3DF2 /* EventManager */,
 				2B3ABB801F45990B008C3DF2 /* Model */,

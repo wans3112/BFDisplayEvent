@@ -10,6 +10,7 @@
 #import "BFEventManager.h"
 
 typedef id (^BFSetValueForKeyBlock)(NSString *key);
+typedef BFEventManager* (^BFEventManagerForKey)(NSString *key);
 
 @interface UIResponder (BFEventManager)
 
@@ -35,6 +36,11 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 @property (nonatomic, strong) BFEventModelBlock          em_model;
 
 /**
+ 获取EventModel
+ */
+@property (nonatomic, strong) BFEventModel               *eventModel;
+
+/**
  获取事件管理器,默认选择最后一个
  */
 @property (nonatomic, strong) BFEventManager             *eventManager;
@@ -42,7 +48,7 @@ typedef id (^BFSetValueForKeyBlock)(NSString *key);
 /**
  事件管理器，当注册多个事件管理器时，通过key取eventManager
  */
-@property (nonatomic, strong) BFSetValueForKeyBlock      em_eventManagerForKey;
+@property (nonatomic, strong) BFEventManagerForKey      em_managerForKey;
 
 
 /**

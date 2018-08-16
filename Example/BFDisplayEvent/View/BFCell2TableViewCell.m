@@ -36,7 +36,13 @@
     [self.button addActionHandler:^(NSInteger tag) {
         model.name = @"wans";
     }];
+}
+
+- (IBAction)btnPressed:(id)sender {
     
+    NSObject<BFCell2Protocol> *model = self.eventModel.model;
+    model.name = @"wans";
+
 }
 
 - (void)dealloc {

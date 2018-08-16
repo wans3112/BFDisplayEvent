@@ -94,7 +94,7 @@ static NSString *kCommonIdentifierKey   = @"CommonIdentifierKey";
         return;
     }
     
-    NSString *identifierKey = [NSString stringWithFormat:@"%ld-0", section];
+    NSString *identifierKey = [NSString stringWithFormat:@"%ld-sectionOnly", section];
     
     [self updateIdentifierManager:identifier identifierKey:identifierKey];
     
@@ -116,7 +116,7 @@ static NSString *kCommonIdentifierKey   = @"CommonIdentifierKey";
 
 - (__kindof UITableViewCell *)em_dequeueReusableCellOnlySecionWithIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *identifierKey = [NSString stringWithFormat:@"%ld-0", indexPath.section];
+    NSString *identifierKey = [NSString stringWithFormat:@"%ld-sectionOnly", indexPath.section];
     NSString *identifier = self.identifierManager[identifierKey];
     if ( !identifier ) {
         identifier = self.identifierManager[kCommonIdentifierKey];
