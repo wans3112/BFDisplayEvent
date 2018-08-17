@@ -1,12 +1,11 @@
+use_frameworks!
 
 target 'BFDisplayEvent_Example' do
   pod 'BFDisplayEvent', :path => '../'
-
+  pod 'WBNetworkingLite'
   target 'BFDisplayEvent_Tests' do
     inherit! :search_paths
 
-#  pod 'Aspects'
-  pod 'WBNetworkingLite'
-
+    
   end
 end

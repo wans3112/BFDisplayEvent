@@ -1,0 +1,6 @@
+framework module BFDisplayEvent {
+  umbrella header "BFDisplayEvent-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -11,17 +11,17 @@
 #import "BFModel2.h"
 #import "BFMode1ViewObject.h"
 #import "BFMode2ViewObject.h"
-#import <WBNetworkingLite/WBNetworkingLite.h>
+#import <WBNetworkingLite/WBNetworking.h>
 
 
 @implementation ViewModel
 
-+ (void)doGetDataSourcesWithCompletion:(void(^)(id))completion {
++ (void)doGetDataSourcesWithCompletion:(void(^)(id result))completion {
     
-    [LYNetWorking GET:^(LYHttpRequestOrder *request) {
+    [WBNetworking GET:^(WBRequestConfig *request) {
         request.url = @"/v2/movie/coming_soon";
     } response:^(id response, NSError *error) {
-        completion(response);
+        if (completion) completion(response);
     }];
 }
 

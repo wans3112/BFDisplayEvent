@@ -56,7 +56,10 @@
  *  构建数据
  */
 - (void)createDataSource {
-    self.objects = [ViewModel doGetDataSources];
+    
+    [ViewModel doGetDataSourcesWithCompletion:^(id result) {
+//        self.objects = result;
+    }];
 }
 
 #pragma mark - Table View
@@ -72,7 +75,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell<BFDisplayProtocol> *cell = [tableView em_dequeueReusableCellOnlySecionWithIndexPath:indexPath];
 
-    id object = ((NSMutableArray *)self.objects[indexPath.section])[indexPath.row];
+    id object = self.objects[indexPath.section][indexPath.row];
     [cell em_displayWithModel:^(BFEventModel *eventModel) {
         eventModel.model = object;
     }];

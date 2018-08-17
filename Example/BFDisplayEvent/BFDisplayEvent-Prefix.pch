@@ -10,10 +10,11 @@
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
-#import <BFDisplayEvent/BFDisplayEvent.h>
-#import "UIButton+Block.h"
-
 #ifdef __OBJC__
     @import UIKit;
     @import Foundation;
+
+#import <BFDisplayEvent/BFDisplayEvent.h>
+#import "UIButton+Block.h"
+
 #endif

@@ -57,7 +57,7 @@ static NSString *kCommonIdentifierKey   = @"CommonIdentifierKey";
         return;
     }
     
-    NSString *identifierKey = [NSString stringWithFormat:@"%ld-0", section];
+    NSString *identifierKey = [NSString stringWithFormat:@"%ld-sectionOnly", section];
     
     [self updateIdentifierManager:identifier identifierKey:identifierKey];
 

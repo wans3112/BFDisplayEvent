@@ -1,0 +1,6 @@
+framework module WBNetworkingLite {
+  umbrella header "WBNetworkingLite-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,9 +1,9 @@
 # BFDisplayEvent
 
-[![CI Status](http://img.shields.io/travis/wans/BFDisplayEvent.svg?style=flat)](https://travis-ci.org/wans/BFDisplayEvent)
-[![Version](https://img.shields.io/cocoapods/v/BFDisplayEvent.svg?style=flat)](http://cocoapods.org/pods/BFDisplayEvent)
-[![License](https://img.shields.io/cocoapods/l/BFDisplayEvent.svg?style=flat)](http://cocoapods.org/pods/BFDisplayEvent)
-[![Platform](https://img.shields.io/cocoapods/p/BFDisplayEvent.svg?style=flat)](http://cocoapods.org/pods/BFDisplayEvent)
+[![CI Status](https://img.shields.io/travis/wans3112/BFDisplayEvent.svg?style=flat)](https://travis-ci.org/wans3112/BFDisplayEvent)
+[![Version](https://img.shields.io/cocoapods/v/BFDisplayEvent.svg?style=flat)](https://cocoapods.org/pods/BFDisplayEvent)
+[![License](https://img.shields.io/cocoapods/l/BFDisplayEvent.svg?style=flat)](https://cocoapods.org/pods/BFDisplayEvent)
+[![Platform](https://img.shields.io/cocoapods/p/BFDisplayEvent.svg?style=flat)](https://cocoapods.org/pods/BFDisplayEvent)
 
 ## Example
 
@@ -13,16 +13,16 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-BFDisplayEvent is available through [CocoaPods](http://cocoapods.org). To install
+BFDisplayEvent is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "BFDisplayEvent"
+pod 'BFDisplayEvent'
 ```
 
 ## Author
 
-wans, wanslm@foxmail.com
+wans3112, wanslm@foxmail.com
 
 ## License
 
