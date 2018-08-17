@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/BFDisplayEvent.svg?style=flat)](https://cocoapods.org/pods/BFDisplayEvent)
 [![Platform](https://img.shields.io/cocoapods/p/BFDisplayEvent.svg?style=flat)](https://cocoapods.org/pods/BFDisplayEvent)
 
+###### 基于MVVM模式的轻量级解耦框架
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
