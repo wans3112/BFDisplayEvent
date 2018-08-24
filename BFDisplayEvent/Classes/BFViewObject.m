@@ -39,6 +39,16 @@
     return [super forwardingTargetForSelector:aSelector];
 }
 
+- (id)valueForUndefinedKey:(NSString *)key {
+    
+    return [self.model valueForKey:key];
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    
+    [self.model setValue:value forUndefinedKey:key];
+}
+
 @end
 
 
