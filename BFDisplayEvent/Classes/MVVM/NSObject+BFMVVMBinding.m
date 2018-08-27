@@ -88,6 +88,7 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
     
     id strOfObj;
     BOOL existArrayObserver = NO;
+    BOOL isAlreadyAddObserver = [self.em_bindingManager.allKeys containsObject:keyPath];
     
     if ( [observerPath containsString:@"["] ) {
         existArrayObserver = YES;
@@ -100,11 +101,13 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
         // 获取监听数组元素的字段
         strOfObj = [mainObj valueForKey:lastPath];
         
-        [mainObj addObserver:self forKeyPath:lastPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+        if ( !isAlreadyAddObserver )
+            [mainObj addObserver:self forKeyPath:lastPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+        
 
     }else {
-        
-        [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+        if ( !isAlreadyAddObserver )
+            [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
     }
     
     if ( !self.em_bindingManager ) {
@@ -166,7 +169,9 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
         keyPath = [self realKeyPath:observerPath];
     }
 
-    [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+    BOOL isAlreadyAddObserver = [self.em_bindingManager.allKeys containsObject:keyPath];
+    if ( !isAlreadyAddObserver )
+        [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
     
     if ( !self.em_bindingManager ) {
         self.em_bindingManager = @{}.mutableCopy;
