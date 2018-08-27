@@ -31,6 +31,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'BFDisplayEvent/Classes/**/*'
+  s.prefix_header_contents = "#import <BFDisplayEvent/BFDisplayEvent.h>"
 
   # s.resource_bundles = {
   #   'BFDisplayEvent' => ['BFDisplayEvent/Assets/*.png']

@@ -11,14 +11,39 @@
 #import "objc/message.h"
 #import "BFViewObject.h"
 #import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
+#import "NSObject+BFKeyValue.h"
 
 static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
+static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
+
+@interface NSObject (BFMVVMBindingKeyPath)
+
+/**
+ 为支持数组格式的model绑定原始path
+ */
+@property (nonatomic, strong) NSString *em_originalPath;
+
+@end
+
+@implementation NSObject (BFMVVMBindingKeyPath)
+
+#pragma mark - Getter&&Setter
+
+- (void)setEm_originalPath:(NSString *)em_originalPath {
+    objc_setAssociatedObject(self, kPropertyBindingKeyPathKey, em_originalPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)em_originalPath {
+    return objc_getAssociatedObject(self, kPropertyBindingKeyPathKey);
+}
+
+@end
 
 @implementation NSObject (BFMVVMBinding)
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wstrict-prototypes"
-- (void)fetchNewValue:(id __autoreleasing *)newValue withPath:(NSString *)keyPath {
+- (id)fetchNewValueWithPath:(NSString *)keyPath {
     
     NSArray *exceptModelKeys = ({
         NSArray *exceptModelKeys;
@@ -27,13 +52,17 @@ static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
         exceptModelKeys;
     });
     
+    __block id newValue;
     __block BOOL isImpGet = NO;
+
+    @em_weakify(self)
     [exceptModelKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        @em_strongify(self)
         SEL getMethod = NSSelectorFromString(obj);
         if ( [self respondsToSelector:getMethod] ) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            *newValue = [self performSelector:getMethod];
+            newValue = [self performSelector:getMethod];
 #pragma clang diagnostic pop
             *stop = YES;
             isImpGet = YES;
@@ -41,8 +70,10 @@ static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
     }];
     
     if ( !isImpGet ) {
-        *newValue = [self valueForKeyPath:keyPath];
+        newValue = [self valueForKeyPath:keyPath];
     }
+    
+    return newValue;
 }
 
 - (void)em_observerPath:(NSString *)observerPath targetAction:(BFMVVMViewAction)targetAction tag:(NSInteger)tag {
@@ -51,45 +82,68 @@ static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
     if ( !observerPath ) return;
     
     NSString *keyPath = [self realKeyPath:observerPath];
-
-    __weak typeof(self) weakSelf = self;
-    [self addObserver:weakSelf forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+    
+    id strOfObj;
+    BOOL existArrayObserver = NO;
+    
+    if ( [observerPath containsString:@"["] ) {
+        existArrayObserver = YES;
+        NSRange laskDianRang = [keyPath rangeOfString:@"." options:NSBackwardsSearch];
+        NSString *lastPath = [keyPath substringFromIndex:laskDianRang.location + 1];
+        NSString *remainPath = [keyPath substringToIndex:laskDianRang.location];
+        NSObject *mainObj = [self em_valueForKeyPath:remainPath];
+        mainObj.em_originalPath = keyPath;
+        
+        // 获取监听数组元素的字段
+        strOfObj = [mainObj valueForKey:lastPath];
+        
+        [mainObj addObserver:self forKeyPath:lastPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+        
+    }else {
+        
+        [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+    }
     
     if ( !self.em_bindingManager ) {
         self.em_bindingManager = @{}.mutableCopy;
     }
     
+    @em_weakify(self)
     void(^updateAction)(BOOL) = ^(BOOL isInitLoad){
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        if ( targetAction ){
-            
-            id newValue;
-            if ( [strongSelf isKindOfClass:BFViewObject.class] ) {
-                [strongSelf fetchNewValue:&newValue withPath:observerPath];
+        @em_strongify(self)
+
+        if ( !targetAction ) return ;
+        
+        id newValue;
+        if ( existArrayObserver ) {
+            newValue = strOfObj;
+        }else {
+            if ( [self isKindOfClass:BFViewObject.class] ) {
+                newValue = [self fetchNewValueWithPath:keyPath];
             }else {
-                newValue = [strongSelf valueForKeyPath:keyPath];
+                newValue = [self valueForKeyPath:keyPath];
             }
-            
-            CTBlockDescription *ct = [[CTBlockDescription alloc] initWithBlock:targetAction];
-            NSMethodSignature *methodSignature = ct.blockSignature;
-            if ( methodSignature.numberOfArguments - 1 == 1) {
-                targetAction(newValue);
-            }else if ( methodSignature.numberOfArguments - 1 == 2 ){
-                targetAction(newValue,isInitLoad);
-            }
+        }
+        
+        CTBlockDescription *ct = [[CTBlockDescription alloc] initWithBlock:targetAction];
+        NSMethodSignature *methodSignature = ct.blockSignature;
+        if ( methodSignature.numberOfArguments - 1 == 1) {
+            targetAction(newValue);
+        }else if ( methodSignature.numberOfArguments - 1 == 2 ){
+            targetAction(newValue,isInitLoad);
         }
     };
     
     updateAction(YES);
-    
+
     NSMutableDictionary *manager = self.em_bindingManager;
-    NSMutableDictionary *actions = manager[keyPath];
-    
-    if ( !actions ) actions = @{}.mutableCopy;
-    
-    actions[@(tag)] = updateAction;
-    manager[keyPath] = actions;
-    self.em_bindingManager = manager;
+    manager[keyPath] = ({
+        NSMutableDictionary *actions = manager[keyPath];
+        if ( !actions ) actions = @{}.mutableCopy;
+        actions[@(tag)] = [updateAction copy];
+        actions;
+    });
+
 }
 
 - (NSString *)realKeyPath:(NSString *)keyPath{
@@ -105,22 +159,23 @@ static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
     
     if ( !observerPath ) return;
     
-    __weak typeof(self) weakSelf = self;
-    [self addObserver:weakSelf forKeyPath:observerPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
+    NSString *keyPath = [self realKeyPath:observerPath];
+    
+    [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
     
     if ( !self.em_bindingManager ) {
         self.em_bindingManager = @{}.mutableCopy;
     }
     
-    NSString *keyPath = [self realKeyPath:observerPath];
-    
+    @em_weakify(self)
     void(^updateAction)() = ^(){
-        __strong typeof(weakSelf) strongSelf = weakSelf;
+        @em_strongify(self)
+        
         id newValue;
-        if ( [strongSelf isKindOfClass:BFViewObject.class] ) {
-            [strongSelf fetchNewValue:&newValue withPath:observerPath];
+        if ( [self isKindOfClass:BFViewObject.class] ) {
+            newValue = [self fetchNewValueWithPath:keyPath];
         }else {
-            newValue = [strongSelf valueForKeyPath:keyPath];
+            newValue = [self valueForKeyPath:keyPath];
         }
         [target setValue:newValue forKeyPath:targetPath];
     };
@@ -128,14 +183,13 @@ static void *kPropertyBindingManagerKey = &kPropertyBindingManagerKey;
     updateAction();
     
     NSMutableDictionary *manager = self.em_bindingManager;
-    NSMutableDictionary *actions = manager[keyPath];
-    if ( !actions ) {
-        actions = @{}.mutableCopy;
-    }
-
-    actions[@0] = updateAction;
-    manager[keyPath] = actions;
-    self.em_bindingManager = manager;
+    manager[keyPath] = ({
+        NSMutableDictionary *actions = manager[keyPath];
+        if ( !actions ) actions = @{}.mutableCopy;
+        actions[@0] = updateAction;
+        actions;
+    });
+    
 }
 
 void em_observerPath(id model, NSString *observerPath, id target, NSString *targetPath) {
@@ -148,14 +202,23 @@ void em_observerPathAction(id model, NSString *observerPath, BFMVVMViewAction ta
     ((void (*)(id, SEL, NSString *, BFMVVMViewAction, NSInteger))objc_msgSend)(model, @selector(em_observerPath:targetAction:tag:), observerPath, targetAction, tag);
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(NSObject *)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    
+    if ( object.em_originalPath )
+        keyPath = object.em_originalPath;
     
     if ( [self.em_bindingManager.allKeys containsObject:keyPath] ) {
-        NSDictionary *actions = self.em_bindingManager[keyPath];
+        NSMutableDictionary *actions = self.em_bindingManager[keyPath];
         NSLog(@"%@:count:%ld",keyPath,actions.count);
-        [actions enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            void(^updateAction)(BOOL) = obj;
-            !updateAction ?: updateAction(NO);
+        [actions enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            void(^updateAction)() = obj;
+            CTBlockDescription *ct = [[CTBlockDescription alloc] initWithBlock:obj];
+            NSMethodSignature *methodSignature = ct.blockSignature;
+            if ( methodSignature.numberOfArguments - 1 == 0) {
+                updateAction();
+            }else if ( methodSignature.numberOfArguments - 1 == 1 ){
+                updateAction(NO);
+            }
         }];
     }
 }
@@ -180,7 +243,6 @@ void em_observerPathAction(id model, NSString *observerPath, BFMVVMViewAction ta
         Method method2 = class_getInstanceMethod([self class], @selector(deallocSwizzle));
         method_exchangeImplementations(method1, method2);
     });
-    
 }
 
 - (void)deallocSwizzle {

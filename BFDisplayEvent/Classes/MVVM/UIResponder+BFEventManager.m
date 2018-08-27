@@ -119,11 +119,11 @@ static const void *kem_eventModelKey = &kem_eventModelKey;
 
 - (BFSetValueForKeyBlock)em_valueForKey {
     
-    __weak typeof(self) weakSelf = self;
+    @em_weakify(self)
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
-        __strong typeof(self) strongSelf = weakSelf;
+        @em_strongify(self);
         
-       return [strongSelf.em_viewController valueForKey:key];
+       return [self.em_viewController valueForKey:key];
     };
     
     return icp_block;
@@ -133,10 +133,10 @@ static const void *kem_eventModelKey = &kem_eventModelKey;
 
 - (BFSetValueForKeyBlock)em_paramForKey {
     
-    __weak typeof(self) weakSelf = self;
+    @em_weakify(self)
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
-        __strong typeof(self) strongSelf = weakSelf;
-        NSMutableDictionary *em_params = objc_getAssociatedObject(strongSelf.em_viewController, kem_paramsKey);
+        @em_strongify(self);
+        NSMutableDictionary *em_params = objc_getAssociatedObject(self.em_viewController, kem_paramsKey);
         return em_params[key];
     };
     
@@ -147,11 +147,11 @@ static const void *kem_eventModelKey = &kem_eventModelKey;
 
 - (BFEventModelBlock)em_model {
 
-    __weak typeof(self) weakSelf = self;
+    @em_weakify(self)
     BFEventModel* (^eventModel_block)(BFEventManagerBlock block) = ^BFEventModel* (BFEventManagerBlock block) {
-        __strong typeof(self) strongSelf = weakSelf;
-        BFEventModel *eventModel = [strongSelf em_Setup:[BFEventModel new] block:block];
-        strongSelf.eventModel = eventModel;
+        @em_strongify(self);
+        BFEventModel *eventModel = [self em_Setup:[BFEventModel new] block:block];
+        self.eventModel = eventModel;
         return eventModel;
     };
     
@@ -171,10 +171,10 @@ static const void *kem_eventModelKey = &kem_eventModelKey;
 
 - (BFEventManagerForKey)em_managerForKey {
     
-    __weak typeof(self) weakSelf = self;
+    @em_weakify(self)
     id (^icp_block)(NSString *key) = ^id (NSString *key) {
-        __strong typeof(self) strongSelf = weakSelf;
-        return strongSelf.eventManagers[key];
+        @em_strongify(self);
+        return self.eventManagers[key];
     };
     
     return icp_block;

@@ -25,11 +25,10 @@
     
     NSArray *tempArray = [keyPath componentsSeparatedByString:kKeyPathOfSep];
 
-    __weak typeof(self) weakSelf = self;
+    @em_weakify(self)
     [tempArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        __strong typeof(self) strongSelf = weakSelf;
-        if ( ![strongSelf targetModelWithKey:key model:&model] ) {
+        @em_strongify(self)
+        if ( ![self targetModelWithKey:key model:&model] ) {
             *stop = YES ;
             model = nil;
         }
@@ -54,10 +53,10 @@
     NSArray *subPaths = [keyPath componentsSeparatedByString:kKeyPathOfSep];
     NSArray *tempArray = [subPaths subarrayWithRange:NSMakeRange(0, subPaths.count - 1)].copy;
     
-    __weak typeof(self) weakSelf = self;
+    @em_weakify(self)
     [tempArray enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL * _Nonnull stop) {
-        __strong typeof(self) strongSelf = weakSelf;
-        if ( ![strongSelf targetModelWithKey:key model:&model] ) {
+        @em_strongify(self)
+        if ( ![self targetModelWithKey:key model:&model] ) {
             *stop = YES ;
             model = nil;
         }
