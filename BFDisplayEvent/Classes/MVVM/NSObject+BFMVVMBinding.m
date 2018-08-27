@@ -76,12 +76,15 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
     return newValue;
 }
 
-- (void)em_observerPath:(NSString *)observerPath targetAction:(BFMVVMViewAction)targetAction tag:(NSInteger)tag {
+- (void)em_observerPath:(NSString *)observerPath targetAction:(BFMVVMViewAction)targetAction tag:(NSInteger)tag isViewObject:(BOOL)isViewObject {
 #pragma clang diagnostic pop
 
     if ( !observerPath ) return;
     
-    NSString *keyPath = [self realKeyPath:observerPath];
+    NSString *keyPath = observerPath;
+    if ( isViewObject ) {
+        keyPath = [self realKeyPath:observerPath];
+    }
     
     id strOfObj;
     BOOL existArrayObserver = NO;
@@ -98,7 +101,7 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
         strOfObj = [mainObj valueForKey:lastPath];
         
         [mainObj addObserver:self forKeyPath:lastPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
-        
+
     }else {
         
         [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
@@ -143,7 +146,6 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
         actions[@(tag)] = [updateAction copy];
         actions;
     });
-
 }
 
 - (NSString *)realKeyPath:(NSString *)keyPath{
@@ -155,12 +157,15 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
     return observerPath;
 }
 
-- (void)em_observerPath:(NSString *)observerPath target:(id)target targetPath:(NSString *)targetPath {
+- (void)em_observerPath:(NSString *)observerPath target:(id)target targetPath:(NSString *)targetPath isViewObject:(BOOL)isViewObject {
     
     if ( !observerPath ) return;
     
-    NSString *keyPath = [self realKeyPath:observerPath];
-    
+    NSString *keyPath = observerPath;
+    if ( isViewObject ) {
+        keyPath = [self realKeyPath:observerPath];
+    }
+
     [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)self];
     
     if ( !self.em_bindingManager ) {
@@ -192,14 +197,14 @@ static void *kPropertyBindingKeyPathKey = &kPropertyBindingKeyPathKey;
     
 }
 
-void em_observerPath(id model, NSString *observerPath, id target, NSString *targetPath) {
+void em_observerPath(id model, NSString *observerPath, id target, NSString *targetPath, BOOL isViewObject) {
     
-    ((void (*)(id, SEL, NSString *, id, NSString *))objc_msgSend)(model, @selector(em_observerPath:target:targetPath:), observerPath, target, targetPath);
+    ((void (*)(id, SEL, NSString *, id, NSString *, BOOL))objc_msgSend)(model, @selector(em_observerPath:target:targetPath:isViewObject:), observerPath, target, targetPath, isViewObject);
 }
 
-void em_observerPathAction(id model, NSString *observerPath, BFMVVMViewAction targetAction, NSInteger tag) {
+void em_observerPathAction(id model, NSString *observerPath, BFMVVMViewAction targetAction, NSInteger tag, BOOL isViewObject) {
     
-    ((void (*)(id, SEL, NSString *, BFMVVMViewAction, NSInteger))objc_msgSend)(model, @selector(em_observerPath:targetAction:tag:), observerPath, targetAction, tag);
+    ((void (*)(id, SEL, NSString *, BFMVVMViewAction, NSInteger, BOOL))objc_msgSend)(model, @selector(em_observerPath:targetAction:tag:isViewObject:), observerPath, targetAction, tag, isViewObject);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(NSObject *)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {

@@ -10,6 +10,8 @@
 
 @interface UITableViewCell (BFAddition)
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnullability-completeness"
 @property (nonatomic, strong) NSIndexPath *em_indexPath;
 
 @end
@@ -26,5 +28,6 @@
 
 - (__kindof UITableViewCell *)em_dequeueReusableCellOnlySecionWithIndexPath:(NSIndexPath *)indexPath;
 - (__kindof UITableViewCell *)em_dequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath;
+#pragma clang diagnostic pop
 
 @end
