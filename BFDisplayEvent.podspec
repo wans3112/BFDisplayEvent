@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BFDisplayEvent'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = '基于MVVM模式的轻量级解耦框架'
 
 # This description is used to generate tags and improve search results.

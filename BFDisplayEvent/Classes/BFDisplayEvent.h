@@ -9,14 +9,14 @@
 #ifndef BFDisplayEvent_h
 #define BFDisplayEvent_h
 
-#import <BFDisplayEvent/BFDisplayEventProtocol.h>
-#import <BFDisplayEvent/BFEventManager.h>
-#import <BFDisplayEvent/BFEventModel.h>
-#import <BFDisplayEvent/UIResponder+BFEventManager.h>
-#import <BFDisplayEvent/BFViewObject.h>
-#import <BFDisplayEvent/NSObject+BFMVVMBinding.h>
-#import <BFDisplayEvent/UITableView+BFAddition.h>
-#import <BFDisplayEvent/NSObject+BFKeyValue.h>
-#import <BFDisplayEvent/BFDisplayEventMacro.h>
+#import "BFDisplayEventProtocol.h"
+#import "BFEventManager.h"
+#import "BFEventModel.h"
+#import "UIResponder+BFEventManager.h"
+#import "BFViewObject.h"
+#import "NSObject+BFMVVMBinding.h"
+#import "UITableView+BFAddition.h"
+#import "NSObject+BFKeyValue.h"
+#import "BFDisplayEventMacro.h"
 
 #endif /* BFDisplayEvent_h */

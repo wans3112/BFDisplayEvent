@@ -18,7 +18,7 @@
 
 - (BFModel *)model1 {
     
-    return self.model;
+    return self.entityModel;
 }
 
 - (void)dealloc {

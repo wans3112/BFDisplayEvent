@@ -7,7 +7,7 @@
 //
 
 #import "BFEventManager.h"
-#import <CTObjectiveCRuntimeAdditions/CTBlockDescription.h>
+#import "CTBlockDescription.h"
 #import "UIResponder+BFEventManager.h"
 
 @interface BFEventManager ()

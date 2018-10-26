@@ -17,6 +17,8 @@
 
 @property (nonatomic,assign) NSInteger                        eventType;   //!< 事件类型
 
+@property (nonatomic,assign) NSInteger                        index;       //!< 事件int标识
+
 @property (nonatomic,assign) NSString                         *identifier; //!< 事件标识
 
 @property (nonatomic,strong) id                               target;      //!< target

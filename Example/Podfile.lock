@@ -1,5 +1,5 @@
 PODS:
-  - BFDisplayEvent (1.0.7):
+  - BFDisplayEvent (2.0.0):
     - CTObjectiveCRuntimeAdditions
   - CTObjectiveCRuntimeAdditions (0.0.1)
   - Reachability (3.2)
@@ -21,11 +21,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BFDisplayEvent: 6b7ca2f165592389ba9e9d7bc43a8f9041e223c0
+  BFDisplayEvent: 7a9816314a8ca0f12f87d77c09e6345ecf82808b
   CTObjectiveCRuntimeAdditions: e4164f82d489d542447a1ae35b27965b356c4738
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   WBNetworkingLite: c091f6bec01fd465e3da856e5b4fcb660172a7ba
 
 PODFILE CHECKSUM: 5324d23441e7e863b834cad4faee24e4d3874df7
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.1

@@ -10,9 +10,9 @@
 
 @interface BFViewObject : NSObject
 
-@property (nonatomic, strong, readonly) id                                   model;
+@property (nonatomic, strong, readonly) id                                   entityModel;
 
-- (instancetype)initWithModel:(id)model;
+- (instancetype)initWithModel:(id)entityModel;
 
 @end
 
@@ -20,7 +20,7 @@
 
 /**
  通过model生成ViewObject
-
+ 
  @param model 数据model
  @return ViewObject
  */

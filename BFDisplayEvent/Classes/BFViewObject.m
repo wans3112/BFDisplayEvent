@@ -9,17 +9,17 @@
 
 @interface BFViewObject ()
 
-@property (nonatomic, strong) id                                   model;
+@property (nonatomic, strong) id                                   entityModel;
 
 @end
 
 @implementation BFViewObject
 
-- (instancetype)initWithModel:(id)model {
+- (instancetype)initWithModel:(id)entityModel {
     
     self = [super init];
     if ( self ) {
-        self.model = model;
+        self.entityModel = entityModel;
     }
     
     return self;
@@ -32,8 +32,8 @@
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
     
-    if ( self.model && [self.model respondsToSelector:aSelector] ) {
-        return self.model;
+    if ( self.entityModel && [self.entityModel respondsToSelector:aSelector] ) {
+        return self.entityModel;
     }
     
     return [super forwardingTargetForSelector:aSelector];
@@ -41,12 +41,12 @@
 
 - (id)valueForUndefinedKey:(NSString *)key {
     
-    return [self.model valueForKey:key];
+    return [self.entityModel valueForKey:key];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     
-    [self.model setValue:value forUndefinedKey:key];
+    [self.entityModel setValue:value forUndefinedKey:key];
 }
 
 @end

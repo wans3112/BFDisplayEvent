@@ -15,10 +15,11 @@
 #import "BFEventManager.h"
 #import "BFEventModel.h"
 #import "BFViewObject.h"
-#import "NSObject+BFKeyValue.h"
+#import "BFDisplayEventMacro.h"
 #import "NSObject+BFMVVMBinding.h"
 #import "UIResponder+BFEventManager.h"
 #import "UITableView+BFAddition.h"
+#import "NSObject+BFKeyValue.h"
 
 FOUNDATION_EXPORT double BFDisplayEventVersionNumber;
 FOUNDATION_EXPORT const unsigned char BFDisplayEventVersionString[];

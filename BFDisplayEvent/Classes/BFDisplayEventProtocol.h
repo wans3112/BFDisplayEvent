@@ -25,7 +25,10 @@ typedef void (^BFEventManagerDoneBlock)(void);
  */
 @protocol BFDisplayProtocol <NSObject>
 
+@optional
 - (void)em_displayWithModel:(BFEventManagerBlock)eventBlock;
+
+- (void)em_displayWithDataModel:(id)model;
 
 @end
 
